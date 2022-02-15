@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -16,10 +16,16 @@ Coded by www.creative-tim.com
 export default {
   sales: {
     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: { label: "Mobile apps", data: [50, 40, 300, 320, 500, 350, 200, 230, 500] },
+    datasets: {
+      label: "Mobile apps",
+      data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+    },
   },
   tasks: {
     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: { label: "Desktop apps", data: [50, 40, 300, 220, 500, 250, 400, 230, 500] },
+    datasets: {
+      label: "Desktop apps",
+      data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+    },
   },
 };

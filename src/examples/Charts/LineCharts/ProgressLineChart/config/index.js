@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -15,7 +15,7 @@ Coded by www.creative-tim.com
 
 /* eslint-disable no-dupe-keys */
 
-// Material Dashboard 2 React base styles
+// Sri Vivekananda React base styles
 import colors from "assets/theme/base/colors";
 
 const { gradients } = colors;
@@ -29,8 +29,12 @@ function configs(color, labels, label, data) {
           label,
           tension: 0,
           pointRadius: 3,
-          pointBackgroundColor: gradients[color] ? gradients[color].main : gradients.info.main,
-          borderColor: gradients[color] ? gradients[color].main : gradients.info.main,
+          pointBackgroundColor: gradients[color]
+            ? gradients[color].main
+            : gradients.info.main,
+          borderColor: gradients[color]
+            ? gradients[color].main
+            : gradients.info.main,
           borderWidth: 4,
           backgroundColor: "transparent",
           maxBarThickness: 6,

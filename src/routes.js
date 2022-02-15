@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -14,7 +14,7 @@ Coded by www.creative-tim.com
 */
 
 /** 
-  All of the routes for the Material Dashboard 2 React are added here,
+  All of the routes for the Sri Vivekananda React are added here,
   You can add a new route, customize the routes and delete the routes here.
 
   Once you add a new route on this file it will be visible automatically on
@@ -35,7 +35,7 @@ Coded by www.creative-tim.com
   10. The `component` key is used to store the component of its route.
 */
 
-// Material Dashboard 2 React layouts
+// Sri Vivekananda React layouts
 import Dashboard from "layouts/dashboard";
 import NoticeBoardSchool from "layouts/NoticeBoardSchool";
 import NoticeBoardJnrClg from "layouts/NoticeBoardJnrClg";

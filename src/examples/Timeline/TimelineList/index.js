@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -19,11 +19,11 @@ import PropTypes from "prop-types";
 // @mui material components
 import Card from "@mui/material/Card";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import { useMaterialUIController } from "context";
 
 // Timeline context
@@ -40,10 +40,17 @@ function TimelineList({ title, dark, children }) {
           bgColor={dark ? "dark" : "white"}
           variant="gradient"
           borderRadius="xl"
-          sx={{ background: ({ palette: { background } }) => darkMode && background.card }}
+          sx={{
+            background: ({ palette: { background } }) =>
+              darkMode && background.card,
+          }}
         >
           <MDBox pt={3} px={3}>
-            <MDTypography variant="h6" fontWeight="medium" color={dark ? "white" : "dark"}>
+            <MDTypography
+              variant="h6"
+              fontWeight="medium"
+              color={dark ? "white" : "dark"}
+            >
               {title}
             </MDTypography>
           </MDBox>

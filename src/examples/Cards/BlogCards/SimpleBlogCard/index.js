@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import MuiLink from "@mui/material/Link";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
@@ -60,7 +60,12 @@ function SimpleBlogCard({ image, title, description, action }) {
         />
       </MDBox>
       <MDBox p={3}>
-        <MDTypography display="inline" variant="h3" textTransform="capitalize" fontWeight="bold">
+        <MDTypography
+          display="inline"
+          variant="h3"
+          textTransform="capitalize"
+          fontWeight="bold"
+        >
           {title}
         </MDTypography>
         <MDBox mt={2} mb={3}>
@@ -70,11 +75,15 @@ function SimpleBlogCard({ image, title, description, action }) {
         </MDBox>
         {action.type === "external" ? (
           <MuiLink href={action.route} target="_blank" rel="noreferrer">
-            <MDButton color={action.color ? action.color : "dark"}>{action.label}</MDButton>
+            <MDButton color={action.color ? action.color : "dark"}>
+              {action.label}
+            </MDButton>
           </MuiLink>
         ) : (
           <Link to={action.route}>
-            <MDButton color={action.color ? action.color : "dark"}>{action.label}</MDButton>
+            <MDButton color={action.color ? action.color : "dark"}>
+              {action.label}
+            </MDButton>
           </Link>
         )}
       </MDBox>

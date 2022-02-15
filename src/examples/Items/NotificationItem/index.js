@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -22,7 +22,7 @@ import PropTypes from "prop-types";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "@mui/material/Link";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
@@ -31,7 +31,13 @@ import menuItem from "examples/Items/NotificationItem/styles";
 
 const NotificationItem = forwardRef(({ icon, title, ...rest }, ref) => (
   <MenuItem {...rest} ref={ref} sx={(theme) => menuItem(theme)}>
-    <MDBox component={Link} py={0.5} display="flex" alignItems="center" lineHeight={1}>
+    <MDBox
+      component={Link}
+      py={0.5}
+      display="flex"
+      alignItems="center"
+      lineHeight={1}
+    >
       <MDTypography variant="body1" color="secondary" lineHeight={0.75}>
         {icon}
       </MDTypography>

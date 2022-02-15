@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -21,7 +21,12 @@ export default styled(TextField)(({ theme, ownerState }) => {
   const { palette, functions } = theme;
   const { error, success, disabled } = ownerState;
 
-  const { grey, transparent, error: colorError, success: colorSuccess } = palette;
+  const {
+    grey,
+    transparent,
+    error: colorError,
+    success: colorSuccess,
+  } = palette;
   const { pxToRem } = functions;
 
   // styles for the input with error={true}

@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -13,10 +13,10 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-// Material Dashboard 2 React base styles
+// Sri Vivekananda React base styles
 import colors from "assets/theme-dark/base/colors";
 
-// Material Dashboard 2 React helper functions
+// Sri Vivekananda React helper functions
 import rgba from "assets/theme-dark/functions/rgba";
 import pxToRem from "assets/theme-dark/functions/pxToRem";
 
@@ -26,10 +26,9 @@ const divider = {
   styleOverrides: {
     root: {
       backgroundColor: transparent.main,
-      backgroundImage: `linear-gradient(to right, ${rgba(dark.main, 0)}, ${white.main}, ${rgba(
-        dark.main,
-        0
-      )}) !important`,
+      backgroundImage: `linear-gradient(to right, ${rgba(dark.main, 0)}, ${
+        white.main
+      }, ${rgba(dark.main, 0)}) !important`,
       height: pxToRem(1),
       margin: `${pxToRem(16)} 0`,
       borderBottom: "none",
@@ -38,10 +37,9 @@ const divider = {
 
     vertical: {
       backgroundColor: transparent.main,
-      backgroundImage: `linear-gradient(to bottom, ${rgba(dark.main, 0)}, ${white.main}, ${rgba(
-        dark.main,
-        0
-      )}) !important`,
+      backgroundImage: `linear-gradient(to bottom, ${rgba(dark.main, 0)}, ${
+        white.main
+      }, ${rgba(dark.main, 0)}) !important`,
       width: pxToRem(1),
       height: "100%",
       margin: `0 ${pxToRem(16)}`,
@@ -50,16 +48,16 @@ const divider = {
 
     light: {
       backgroundColor: transparent.main,
-      backgroundImage: `linear-gradient(to right, ${rgba(white.main, 0)}, ${rgba(
-        dark.main,
-        0.4
-      )}, ${rgba(white.main, 0)}) !important`,
+      backgroundImage: `linear-gradient(to right, ${rgba(
+        white.main,
+        0
+      )}, ${rgba(dark.main, 0.4)}, ${rgba(white.main, 0)}) !important`,
 
       "&.MuiDivider-vertical": {
-        backgroundImage: `linear-gradient(to bottom, ${rgba(white.main, 0)}, ${rgba(
-          dark.main,
-          0.4
-        )}, ${rgba(white.main, 0)}) !important`,
+        backgroundImage: `linear-gradient(to bottom, ${rgba(
+          white.main,
+          0
+        )}, ${rgba(dark.main, 0.4)}, ${rgba(white.main, 0)}) !important`,
       },
     },
   },

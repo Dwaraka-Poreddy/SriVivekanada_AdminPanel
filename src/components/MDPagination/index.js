@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -18,7 +18,7 @@ import { forwardRef, createContext, useContext, useMemo } from "react";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDBox from "components/MDBox";
 
 // Custom styles for MDPagination
@@ -32,7 +32,10 @@ const MDPagination = forwardRef(
     const context = useContext(Context);
     const paginationSize = context ? context.size : null;
 
-    const value = useMemo(() => ({ variant, color, size }), [variant, color, size]);
+    const value = useMemo(
+      () => ({ variant, color, size }),
+      [variant, color, size]
+    );
 
     return (
       <Context.Provider value={value}>

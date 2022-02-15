@@ -1,7 +1,7 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,7 +16,7 @@ import MDTypography from "components/MDTypography";
 
 import bgImage from "assets/images/bg-reset-cover.jpeg";
 
-// Material Dashboard 2 React example components
+// Sri Vivekananda React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
@@ -499,13 +499,15 @@ function Dashboard() {
                         </MDButton>
                       </MDBox>
                     </form>
-                    <ProgressBar
-                      completed={imgProgress}
-                      bgColor="#71be1e"
-                      labelColor="#e80909"
-                      labelSize="10 px"
-                      animateOnRender
-                    />
+                    {imgProgress ? (
+                      <ProgressBar
+                        completed={imgProgress}
+                        bgColor="#71be1e"
+                        labelColor="#e80909"
+                        labelSize="10 px"
+                        animateOnRender
+                      />
+                    ) : null}
                   </MDBox>
                   {/* dwarak snackbar pettava uploaded image ani and miui linear
                   progressbar vadatam rale */}
@@ -649,13 +651,15 @@ function Dashboard() {
                         </MDButton>
                       </MDBox>
                     </form>
-                    <ProgressBar
-                      completed={pdfProgress}
-                      bgColor="#71be1e"
-                      labelColor="#e80909"
-                      labelSize="10 px"
-                      animateOnRender
-                    />
+                    {pdfProgress ? (
+                      <ProgressBar
+                        completed={pdfProgress}
+                        bgColor="#71be1e"
+                        labelColor="#e80909"
+                        labelSize="10 px"
+                        animateOnRender
+                      />
+                    ) : null}
                   </MDBox>
                 </MDBox>
               </Card>

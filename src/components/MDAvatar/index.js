@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -46,7 +46,16 @@ MDAvatar.propTypes = {
     "dark",
   ]),
   size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl", "xxl"]),
-  shadow: PropTypes.oneOf(["none", "xs", "sm", "md", "lg", "xl", "xxl", "inset"]),
+  shadow: PropTypes.oneOf([
+    "none",
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl",
+    "xxl",
+    "inset",
+  ]),
 };
 
 export default MDAvatar;

@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -25,17 +25,17 @@ import { Line } from "react-chartjs-2";
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
-// Material Dashboard 2 React helper functions
+// Sri Vivekananda React helper functions
 import gradientChartLine from "assets/theme/functions/gradientChartLine";
 
 // GradientLineChart configurations
 import configs from "examples/Charts/LineCharts/GradientLineChart/configs";
 
-// Material Dashboard 2 React base styles
+// Sri Vivekananda React base styles
 import colors from "assets/theme/base/colors";
 
 function GradientLineChart({ icon, title, description, height, chart }) {
@@ -57,7 +57,9 @@ function GradientLineChart({ icon, title, description, height, chart }) {
           maxBarThickness: 6,
           backgroundColor: gradientChartLine(
             chartRef.current.children[0],
-            colors[dataset.color] ? colors[dataset.color || "dark"].main : colors.dark.main
+            colors[dataset.color]
+              ? colors[dataset.color || "dark"].main
+              : colors.dark.main
           ),
         }))
       : [];

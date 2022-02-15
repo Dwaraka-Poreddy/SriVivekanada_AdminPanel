@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 // @mui material components
 import { styled } from "@mui/material/styles";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDButton from "components/MDButton";
 
 export default styled(MDButton)(({ theme, ownerState }) => {
@@ -50,7 +50,9 @@ export default styled(MDButton)(({ theme, ownerState }) => {
 
     "&:hover, &:focus, &:active": {
       transform: "none",
-      boxShadow: (variant !== "gradient" || variant !== "contained") && "none !important",
+      boxShadow:
+        (variant !== "gradient" || variant !== "contained") &&
+        "none !important",
       opacity: "1 !important",
     },
 

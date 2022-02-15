@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -19,7 +19,8 @@ import { styled } from "@mui/material/styles";
 
 export default styled(Drawer)(({ theme, ownerState }) => {
   const { palette, boxShadows, transitions, breakpoints, functions } = theme;
-  const { transparentSidenav, whiteSidenav, miniSidenav, darkMode } = ownerState;
+  const { transparentSidenav, whiteSidenav, miniSidenav, darkMode } =
+    ownerState;
 
   const sidebarWidth = 250;
   const { transparent, gradients, white, background } = palette;

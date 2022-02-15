@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.1.0
+* Sri Vivekananda React - v2.1.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -19,7 +19,7 @@ import PropTypes from "prop-types";
 // @mui material components
 import Icon from "@mui/material/Icon";
 
-// Material Dashboard 2 React components
+// Sri Vivekananda React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
@@ -33,7 +33,11 @@ function TimelineItem({ color, icon, title, dateTime, description, lastItem }) {
   const isDark = useTimeline();
 
   return (
-    <MDBox position="relative" mb={3} sx={(theme) => timelineItem(theme, { lastItem, isDark })}>
+    <MDBox
+      position="relative"
+      mb={3}
+      sx={(theme) => timelineItem(theme, { lastItem, isDark })}
+    >
       <MDBox
         display="flex"
         justifyContent="center"
@@ -51,8 +55,17 @@ function TimelineItem({ color, icon, title, dateTime, description, lastItem }) {
       >
         <Icon fontSize="inherit">{icon}</Icon>
       </MDBox>
-      <MDBox ml={5.75} pt={description ? 0.7 : 0.5} lineHeight={0} maxWidth="30rem">
-        <MDTypography variant="button" fontWeight="medium" color={isDark ? "white" : "dark"}>
+      <MDBox
+        ml={5.75}
+        pt={description ? 0.7 : 0.5}
+        lineHeight={0}
+        maxWidth="30rem"
+      >
+        <MDTypography
+          variant="button"
+          fontWeight="medium"
+          color={isDark ? "white" : "dark"}
+        >
           {title}
         </MDTypography>
         <MDBox mt={0.5}>
