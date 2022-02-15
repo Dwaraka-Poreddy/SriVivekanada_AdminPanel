@@ -1,0 +1,17 @@
+.carouselImageDiv {
+  height: 500px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media (max-width: 500px) {
+  .carouselImageDiv {
+    height: 200px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 992px) {
+  .carouselImageDiv {
+    height: 300px;
+  }
+}

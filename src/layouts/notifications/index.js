@@ -1,12 +1,12 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Material Dashboard 2 React - v2.1.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
+* Copyright 2022 Creative Tim (https://Srinivas&Dwarak)
 
-Coded by www.creative-tim.com
+Coded by Srinivas&Dwarak
 
  =========================================================
 
@@ -19,14 +19,14 @@ import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
-// Sri Vivekananda React components
+// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAlert from "components/MDAlert";
 import MDButton from "components/MDButton";
 import MDSnackbar from "components/MDSnackbar";
 
-// Sri Vivekananda React example components
+// Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";

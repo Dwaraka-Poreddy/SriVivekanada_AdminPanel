@@ -32,6 +32,8 @@ import { storage } from "../.././firebase";
 import { v4 as uuidv4 } from "uuid";
 import Carousel from "react-bootstrap/Carousel";
 import ProgressBar from "@ramonak/react-progress-bar";
+import MDSnackbar from "components/MDSnackbar";
+import "../index.css";
 
 function Dashboard() {
   const database = firebase.firestore();
@@ -42,38 +44,124 @@ function Dashboard() {
   const [imagesss, setimagesss] = useState([]);
   const [pdfsss, setpdfsss] = useState([]);
   const [textsss, settextsss] = useState([]);
+  const [ImgsuccessSB, setImgsuccessSB] = useState(false);
+  const closeImgsuccessSB = () => setImgsuccessSB(false);
+  const openImgsuccessSB = () => setImgsuccessSB(true);
+  const [PdfsuccessSB, setPdfsuccessSB] = useState(false);
+  const closePdfsuccessSB = () => setPdfsuccessSB(false);
+  const openPdfsuccessSB = () => setPdfsuccessSB(true);
+  const [TextsuccessSB, setTextsuccessSB] = useState(false);
+  const closeTextsuccessSB = () => setTextsuccessSB(false);
+  const openTextsuccessSB = () => setTextsuccessSB(true);
+  const [ImgDeleteSB, setImgDeleteSB] = useState(false);
+  const openImgDeleteSB = () => setImgDeleteSB(true);
+  const closeImgDeleteSB = () => setImgDeleteSB(false);
+  const [PdfDeleteSB, setPdfDeleteSB] = useState(false);
+  const openPdfDeleteSB = () => setPdfDeleteSB(true);
+  const closePdfDeleteSB = () => setPdfDeleteSB(false);
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
         .collection("notice_board_DegreeClg")
         .doc("notice_board_DegreeClg")
         .get();
+      console.log("inside images useeffect");
       setimagesss(snapshot.data().images_array);
     };
     getContent();
-  }, [imagesss]);
+  }, []);
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
         .collection("notice_board_DegreeClg")
         .doc("notice_board_DegreeClg")
         .get();
+      console.log("inside pdfs useeffect");
+
       setpdfsss(snapshot.data().pdfs_array);
     };
     getContent();
-  }, [pdfsss]);
+  }, []);
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
         .collection("notice_board_DegreeClg")
         .doc("notice_board_DegreeClg")
         .get();
+      console.log("inside texts useeffect");
+
       setNewText(snapshot.data().texts_array[0]);
       console.log("useEffect text first item : ", newText);
       // settextsss(snapshot.data().texts_array);
     };
     getContent();
   }, []);
+
+  const renderImgsuccessSB = (
+    <MDSnackbar
+      color="success"
+      icon="check"
+      title="Notice Board"
+      content="Image along with text uploaded successfully!"
+      dateTime="just now"
+      open={ImgsuccessSB}
+      onClose={closeImgsuccessSB}
+      close={closeImgsuccessSB}
+      bgWhite
+    />
+  );
+  const renderPdfsuccessSB = (
+    <MDSnackbar
+      color="success"
+      icon="check"
+      title="Notice Board"
+      content="PDF uploaded successfully!"
+      dateTime="just now"
+      open={PdfsuccessSB}
+      onClose={closePdfsuccessSB}
+      close={closePdfsuccessSB}
+      bgWhite
+    />
+  );
+  const renderTextsuccessSB = (
+    <MDSnackbar
+      color="success"
+      icon="check"
+      title="Notice Board"
+      content="Text updated successfully!"
+      dateTime="just now"
+      open={TextsuccessSB}
+      onClose={closeTextsuccessSB}
+      close={closeTextsuccessSB}
+      bgWhite
+    />
+  );
+  const renderImgDeleteSB = (
+    <MDSnackbar
+      color="error"
+      icon="warning"
+      title="Notice Board"
+      content="Image deleted successfully!"
+      dateTime="just now"
+      open={ImgDeleteSB}
+      onClose={closeImgDeleteSB}
+      close={closeImgDeleteSB}
+      bgWhite
+    />
+  );
+  const renderPdfDeleteSB = (
+    <MDSnackbar
+      color="error"
+      icon="warning"
+      title="Notice Board"
+      content="Pdf deleted successfully!"
+      dateTime="just now"
+      open={PdfDeleteSB}
+      onClose={closePdfDeleteSB}
+      close={closePdfDeleteSB}
+      bgWhite
+    />
+  );
   const HandleImageUpload = async (e) => {
     var ud = uuidv4();
     console.log(ud);
@@ -112,10 +200,19 @@ function Dashboard() {
                 },
                 { merge: true }
               );
+            setImgsuccessSB(true);
+            const snapshot2 = await database
+              .collection("notice_board_DegreeClg")
+              .doc("notice_board_DegreeClg")
+              .get();
+            console.log("inside images useeffect");
+            setimagesss(snapshot2.data().images_array);
+
+            document.getElementById("ImageUpload").reset();
+            setimgProgress(0);
           });
       }
     );
-    document.getElementById("ImageUpload").reset();
   };
   const HandleTextUpload = async (e) => {
     e.preventDefault();
@@ -135,6 +232,7 @@ function Dashboard() {
         },
         { merge: true }
       );
+    setTextsuccessSB(true);
   };
 
   const HandlePdfUpload = async (e) => {
@@ -174,11 +272,18 @@ function Dashboard() {
                 },
                 { merge: true }
               );
+            setPdfsuccessSB(true);
+            const snapshot2 = await database
+              .collection("notice_board_DegreeClg")
+              .doc("notice_board_DegreeClg")
+              .get();
+            console.log("inside pdfs useeffect");
+            setpdfsss(snapshot2.data().pdfs_array);
+            document.getElementById("PdfUpload").reset();
+            setpdfProgress(0);
           });
       }
     );
-    setpdfProgress(0);
-    document.getElementById("PdfUpload").reset();
   };
   const HandledeleteImage = async (id) => {
     const snapshot = await database
@@ -201,6 +306,13 @@ function Dashboard() {
         },
         { merge: true }
       );
+    setImgDeleteSB(true);
+    const snapshot2 = await database
+      .collection("notice_board_DegreeClg")
+      .doc("notice_board_DegreeClg")
+      .get();
+    console.log("inside images useeffect");
+    setimagesss(snapshot2.data().images_array);
   };
   const HandledeletePdf = async (id) => {
     const snapshot = await database
@@ -221,6 +333,13 @@ function Dashboard() {
         },
         { merge: true }
       );
+    setPdfDeleteSB(true);
+    const snapshot2 = await database
+      .collection("notice_board_DegreeClg")
+      .doc("notice_board_DegreeClg")
+      .get();
+    console.log("inside pdfs useeffect");
+    setpdfsss(snapshot2.data().pdfs_array);
   };
 
   return (
@@ -321,7 +440,7 @@ function Dashboard() {
                   </MDBox>
                 </Card>
               </MDBox>
-            </Grid>{" "}
+            </Grid>
             <Grid item xs={12} md={6} lg={6}>
               <MDBox mb={3}>
                 <Card sx={{ height: "100%" }}>
@@ -390,7 +509,7 @@ function Dashboard() {
         </MDBox>
         <br /> <br />
         <center>
-          <h4>Notice Board - Degree College </h4>
+          <h4>Notice Board - Degree College</h4>
         </center>
         <br />
         <MDBox>
@@ -413,13 +532,24 @@ function Dashboard() {
                 <MDBox p={4}>
                   <Carousel fade>
                     {imagesss.map((imag, id) => {
+                      const linky = imag.url;
                       return (
-                        <Carousel.Item>
-                          <img
-                            className="d-block w-100"
+                        <Carousel.Item className="carouselImageBox">
+                          <div
+                            className="carouselImageDiv"
+                            style={{
+                              backgroundImage: "url(" + linky + ")",
+                            }}
+                          ></div>
+                          {/* <img
+                            style={{
+                              objectFit: "contain",
+                              objectPosition: "50% 50%",
+                            }}
+                            className="d-block  img-fluid"
                             src={imag.url}
                             alt="First slide"
-                          />
+                          /> */}
                           <Carousel.Caption>
                             <h3>{imag.ImgText}</h3>
                             <MDBox mt={3} mb={3}>
@@ -433,6 +563,7 @@ function Dashboard() {
                               >
                                 Delete
                               </MDButton>
+                              {renderImgDeleteSB}
                             </MDBox>
                           </Carousel.Caption>
                         </Carousel.Item>
@@ -509,6 +640,7 @@ function Dashboard() {
                       />
                     ) : null}
                   </MDBox>
+                  {renderImgsuccessSB}
                   {/* dwarak snackbar pettava uploaded image ani and miui linear
                   progressbar vadatam rale */}
                 </MDBox>
@@ -523,7 +655,7 @@ function Dashboard() {
               <Card id="delete-account">
                 <MDBox pt={3} px={2}>
                   <MDTypography variant="h6" fontWeight="medium">
-                    Billing Information
+                    PDF Section
                   </MDTypography>
                 </MDBox>
                 <MDBox pt={1} pb={2} px={2}>
@@ -599,6 +731,7 @@ function Dashboard() {
                                   </MDButton>
                                 </a>
                               </MDBox>
+                              {renderPdfDeleteSB}
                             </MDBox>
                           </MDBox>
                         </MDBox>
@@ -661,6 +794,7 @@ function Dashboard() {
                       />
                     ) : null}
                   </MDBox>
+                  {renderPdfsuccessSB}
                 </MDBox>
               </Card>
             </Grid>
@@ -697,6 +831,7 @@ function Dashboard() {
                           </MDButton>
                         </center>
                       </MDBox>
+                      {renderTextsuccessSB}
                     </form>
                   </MDBox>
                 </MDBox>

@@ -3,10 +3,10 @@
 * Sri Vivekananda React - v2.1.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
+* Copyright 2022 Creative Tim (https://Srinivas&Dwarak)
 
-Coded by www.creative-tim.com
+Coded by Srinivas&Dwarak
 
  =========================================================
 
@@ -57,25 +57,25 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "NoticeBoard School",
+    name: "NoticeBoard ",
     key: "noticeboardschool",
-    icon: <Icon fontSize="small">SnoticeBoard</Icon>,
+    icon: <Icon fontSize="small">NoticeBoard</Icon>,
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
   {
-    type: "collapse",
+    type: "title",
     name: "NoticeBoard Junior Clg",
     key: "noticeboardjnrclg",
-    icon: <Icon fontSize="small">JnoticeBoard</Icon>,
+    icon: <Icon fontSize="small">NoticeBoard</Icon>,
     route: "/notice_Board_Junior_College",
     component: <NoticeBoardJnrClg />,
   },
   {
-    type: "collapse",
+    type: "title",
     name: "NoticeBoard Degree Clg",
     key: "noticeboarddegreeclg",
-    icon: <Icon fontSize="small">DnoticeBoard</Icon>,
+    icon: <Icon fontSize="small">NoticeBoard</Icon>,
     route: "/notice_Board_Degree_College",
     component: <NoticeBoardDgClg />,
   },

@@ -50,7 +50,7 @@
 
 - Migration from Material-UI to MUI v5.
 - Migration from JSS to `styled` api, emotion and `sx` prop.
-- Product folders and files structured are updated: [README](https://github.com/creativetimofficial/material-dashboard-react/blob/main/README.md)
+- Product folders and files structured are updated: [README](https://github.com/creativetimofficial/Srinivas&Dwarak/blob/main/README.md)
 - New components are added
 - New example blocks are added
 - Components are Example Blocks are now totally customizable and reusable
@@ -174,12 +174,12 @@ web-vitals
 
 ### Bug fixing
 
-- https://github.com/creativetimofficial/material-dashboard-react/issues/145 (this was solved since we've changed react-google-maps with simple Google Maps API)
-- https://github.com/creativetimofficial/material-dashboard-react/issues/140 (this was solved since we've changed react-google-maps with simple Google Maps API)
-- https://github.com/creativetimofficial/material-dashboard-react/issues/138 (can be closed since it was help wanted)
-- https://github.com/creativetimofficial/material-dashboard-react/issues/137 (user did not respond)
-- https://github.com/creativetimofficial/material-dashboard-react/issues/133 (fixed it by using `useLocation` from `react-router-dom`)
-- https://github.com/creativetimofficial/material-dashboard-react/issues/16 (please check the following page: https://demos.creative-tim.com/material-dashboard-react/#/rtl/rtl-page)
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/145 (this was solved since we've changed react-google-maps with simple Google Maps API)
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/140 (this was solved since we've changed react-google-maps with simple Google Maps API)
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/138 (can be closed since it was help wanted)
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/137 (user did not respond)
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/133 (fixed it by using `useLocation` from `react-router-dom`)
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/16 (please check the following page: https://demos.creative-tim.com/Srinivas&Dwarak/#/rtl/rtl-page)
 
 ### Major style changes
 
@@ -232,10 +232,10 @@ _You will also have the following message: `found 88 vulnerabilities (1 low, 87 
 
 ### Bug fixing
 
-- https://github.com/creativetimofficial/material-dashboard-react/issues/121
-- https://github.com/creativetimofficial/material-dashboard-react/issues/98
-- https://github.com/creativetimofficial/material-dashboard-react/pull/99
-- https://github.com/creativetimofficial/material-dashboard-react/pull/65
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/121
+- https://github.com/creativetimofficial/Srinivas&Dwarak/issues/98
+- https://github.com/creativetimofficial/Srinivas&Dwarak/pull/99
+- https://github.com/creativetimofficial/Srinivas&Dwarak/pull/65
 
 ### Major style changes
 
@@ -286,7 +286,7 @@ _Warnings might appear while doing an npm install - they do not affect the UI or
 
 ### Major style changes
 
-- Renamed `assets/jss/material-dashboard-react/layouts/dashboardStyle.js` to `assets/jss/material-dashboard-react/layouts/adminStyle.js`
+- Renamed `assets/jss/Srinivas&Dwarak/layouts/dashboardStyle.js` to `assets/jss/Srinivas&Dwarak/layouts/adminStyle.js`
 
 ### Deleted components
 
@@ -329,7 +329,7 @@ typescript                3.5.1   →    3.5.3
 - Changed all string refs to `React.createRef()`
 - Added types validation in each component
 - Solved linting issues
-- Solved https://github.com/creativetimofficial/material-dashboard-react/issues/83
+- Solved https://github.com/creativetimofficial/Srinivas&Dwarak/issues/83
 
 ### Major style changes
 
@@ -367,15 +367,15 @@ ajv                        6.9.1   →   6.10.0
 
 ### Nice stuff
 
-- [Added RTL support](https://github.com/creativetimofficial/material-dashboard-react/issues/16)
+- [Added RTL support](https://github.com/creativetimofficial/Srinivas&Dwarak/issues/16)
 
 ### Bug Fixing
 
-- [Added new script for npm](https://github.com/creativetimofficial/material-dashboard-react/issues/69)
-- Changed our buggy routing system, now it should work flawlessly, for more info, please refer to our [live docs here](https://demos.creative-tim.com/material-dashboard-react/#/documentation/routing-system)
-- [https://github.com/creativetimofficial/material-dashboard-react/issues/67](https://github.com/creativetimofficial/material-dashboard-react/issues/67)
-- [https://github.com/creativetimofficial/material-dashboard-react/issues/68](https://github.com/creativetimofficial/material-dashboard-react/issues/68)
-- [https://github.com/creativetimofficial/material-dashboard-react/issues/66](https://github.com/creativetimofficial/material-dashboard-react/issues/66)
+- [Added new script for npm](https://github.com/creativetimofficial/Srinivas&Dwarak/issues/69)
+- Changed our buggy routing system, now it should work flawlessly, for more info, please refer to our [live docs here](https://demos.creative-tim.com/Srinivas&Dwarak/#/documentation/routing-system)
+- [https://github.com/creativetimofficial/Srinivas&Dwarak/issues/67](https://github.com/creativetimofficial/Srinivas&Dwarak/issues/67)
+- [https://github.com/creativetimofficial/Srinivas&Dwarak/issues/68](https://github.com/creativetimofficial/Srinivas&Dwarak/issues/68)
+- [https://github.com/creativetimofficial/Srinivas&Dwarak/issues/66](https://github.com/creativetimofficial/Srinivas&Dwarak/issues/66)
 
 ### Major style changes
 
@@ -444,10 +444,10 @@ ajv                        6.9.1   →   6.10.0
 
 ### Major style changes
 
-- `src/assets/jss/material-dashboard-react/components/tasksStyle.jsx`
-- `src/assets/jss/material-dashboard-react/checkboxAdnRadioStyle.jsx`
-- `src/assets/jss/material-dashboard-react/components/customTabsStyle.jsx`
-- `src/assets/jss/material-dashboard-react/components/snackbarContentStyle.jsx`
+- `src/assets/jss/Srinivas&Dwarak/components/tasksStyle.jsx`
+- `src/assets/jss/Srinivas&Dwarak/checkboxAdnRadioStyle.jsx`
+- `src/assets/jss/Srinivas&Dwarak/components/customTabsStyle.jsx`
+- `src/assets/jss/Srinivas&Dwarak/components/snackbarContentStyle.jsx`
 
 ### Deleted dependencies
 
@@ -474,13 +474,13 @@ ajv                        6.9.1   →   6.10.0
 ### Bug Fixing
 
 - Github solved issues:
-  - `https://github.com/creativetimofficial/material-dashboard-react/issues/58`
+  - `https://github.com/creativetimofficial/Srinivas&Dwarak/issues/58`
 - Changed the `GridContainer` component
 
 ### Major style changes
 
-- `src/assets/jss/material-dashboard-react/components/footerStyle.jsx`
-- `src/assets/jss/material-dashboard-react/components/headerStyle.jsx`
+- `src/assets/jss/Srinivas&Dwarak/components/footerStyle.jsx`
+- `src/assets/jss/Srinivas&Dwarak/components/headerStyle.jsx`
 
 ### Added dependencies
 
@@ -498,26 +498,26 @@ ajv                        6.9.1   →   6.10.0
 - Added resize event listener for window ([see this issue here](https://github.com/creativetimofficial/ct-material-dashboard-pro-react/issues/40#issuecomment-406983150))
 - Added issues template file
 - Github solved issues:
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/49 (dropped `react-popper` in favour of `@material-ui/core/Popper`)
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/47
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/45
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/38
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/37
+  - https://github.com/creativetimofficial/Srinivas&Dwarak/issues/49 (dropped `react-popper` in favour of `@material-ui/core/Popper`)
+  - https://github.com/creativetimofficial/Srinivas&Dwarak/issues/47
+  - https://github.com/creativetimofficial/Srinivas&Dwarak/issues/45
+  - https://github.com/creativetimofficial/Srinivas&Dwarak/issues/38
+  - https://github.com/creativetimofficial/Srinivas&Dwarak/issues/37
 - Github enhancement issues:
-  - https://github.com/creativetimofficial/material-dashboard-react/issues/47 (read the [./README.md](./README.md) file)
+  - https://github.com/creativetimofficial/Srinivas&Dwarak/issues/47 (read the [./README.md](./README.md) file)
 
 ### Major style changes
 
 - Added styles for `svg`'s, **font-awesome** classes and `.material-icons` class inside
-  - `src/assets/jss/material-dashboard-react/views/dashboardStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/buttonStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/cardFooterStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/cardHeaderStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/headerLinksStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/components/customTabsStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/views/dashboardStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/components/buttonStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/components/cardFooterStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/components/cardHeaderStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/components/headerLinksStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/components/customTabsStyle.jsx`
 - Others
-  - `src/assets/jss/material-dashboard-react/tooltipStyle.jsx`
-  - `src/assets/jss/material-dashboard-react/dropdownStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/tooltipStyle.jsx`
+  - `src/assets/jss/Srinivas&Dwarak/dropdownStyle.jsx`
 
 ### Dropped components
 
@@ -551,9 +551,9 @@ ajv                        6.9.1   →   6.10.0
 
 ### Major style changes
 
-- Moved the styles of `src/components/` inside `src/assets/jss/material-dashboard-react/components/`
-- Moved the styles of `src/layouts/` inside `src/assets/jss/material-dashboard-react/layouts/`
-- Moved the styles of `src/views/` inside `src/assets/jss/material-dashboard-react/views/`
+- Moved the styles of `src/components/` inside `src/assets/jss/Srinivas&Dwarak/components/`
+- Moved the styles of `src/layouts/` inside `src/assets/jss/Srinivas&Dwarak/layouts/`
+- Moved the styles of `src/views/` inside `src/assets/jss/Srinivas&Dwarak/views/`
 - Almost all styles have been changed more or less
 
 ### Dropped components
@@ -609,8 +609,8 @@ ajv                        6.9.1   →   6.10.0
 ### Bug Fixing
 
 - Renamed `src/containers/App/App.jsx` to `src/layouts/Dashboard/Dashboard.jsx`
-- Renamed `src/variables/styles.jsx` to `src/assets/jss/material-dashboard-react.jsx`
-- Moved all the files from `src/variables/styles/` to `src/assets/jss/material-dashboard-react/`
+- Renamed `src/variables/styles.jsx` to `src/assets/jss/Srinivas&Dwarak.jsx`
+- Moved all the files from `src/variables/styles/` to `src/assets/jss/Srinivas&Dwarak/`
 - Changes caused by the upgrade of `material-ui`
 - Small bug fixing
 

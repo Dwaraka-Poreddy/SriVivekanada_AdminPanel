@@ -3,10 +3,10 @@
 * Sri Vivekananda React - v2.1.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
+* Copyright 2022 Creative Tim (https://Srinivas&Dwarak)
 
-Coded by www.creative-tim.com
+Coded by Srinivas&Dwarak
 
  =========================================================
 
@@ -62,7 +62,7 @@ function Footer({ light }) {
               </Icon>
             </MDBox>
             by
-            <Link href="https://www.creative-tim.com/" target="_blank">
+            <Link href="https://Srinivas&Dwarak/" target="_blank">
               <MDTypography
                 variant="button"
                 fontWeight="medium"
@@ -91,7 +91,7 @@ function Footer({ light }) {
             })}
           >
             <MDBox component="li" pr={2} lineHeight={1}>
-              <Link href="https://www.creative-tim.com/" target="_blank">
+              <Link href="https://Srinivas&Dwarak/" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
@@ -113,7 +113,7 @@ function Footer({ light }) {
               </Link>
             </MDBox>
             <MDBox component="li" px={2} lineHeight={1}>
-              <Link href="https://www.creative-tim.com/blog" target="_blank">
+              <Link href="https://Srinivas&Dwarak/blog" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
@@ -124,7 +124,7 @@ function Footer({ light }) {
               </Link>
             </MDBox>
             <MDBox component="li" pl={2} lineHeight={1}>
-              <Link href="https://www.creative-tim.com/license" target="_blank">
+              <Link href="https://Srinivas&Dwarak/license" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
