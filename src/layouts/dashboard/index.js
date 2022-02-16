@@ -20,13 +20,13 @@ import bgImage from "assets/images/bg-reset-cover.jpeg";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Dashboard components
 import { Divider, TextField } from "@mui/material";
 
 //New changes by Dwarak
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import firebase from "../.././firebase";
 import { storage } from "../.././firebase";
 import { v4 as uuidv4 } from "uuid";
@@ -34,12 +34,13 @@ import Carousel from "react-bootstrap/Carousel";
 import ProgressBar from "@ramonak/react-progress-bar";
 import MDSnackbar from "components/MDSnackbar";
 import "../index.css";
-
-function Dashboard() {
+import { Link, useNavigate } from "react-router-dom";
+function Dashboard({ history }) {
   const database = firebase.firestore();
   const [imgProgress, setimgProgress] = useState(0);
   const [pdfProgress, setpdfProgress] = useState(0);
   const [ImgText, setImgText] = useState("");
+  const [PdfText, setPdfText] = useState("");
   const [newText, setNewText] = useState("");
   const [imagesss, setimagesss] = useState([]);
   const [pdfsss, setpdfsss] = useState([]);
@@ -59,6 +60,24 @@ function Dashboard() {
   const [PdfDeleteSB, setPdfDeleteSB] = useState(false);
   const openPdfDeleteSB = () => setPdfDeleteSB(true);
   const closePdfDeleteSB = () => setPdfDeleteSB(false);
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => ({ ...state }));
+  useEffect(() => {
+    if (user && user.token) {
+      navigate("/dashboard");
+    } else {
+      navigate("/authentication/sign-in");
+    }
+  }, [user]);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(async function (user) {
+      if (!user) {
+        history.push("/authentication/sign-in");
+      } else {
+        await getDoc(user.uid);
+      }
+    });
+  }, []);
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
@@ -259,7 +278,8 @@ function Dashboard() {
               .get();
             console.log("namaste", snapshot.data().pdfs_array);
             var daty = snapshot.data().pdfs_array;
-            daty.push(url);
+            const newpdfdaty = { url, PdfText };
+            daty.push(newpdfdaty);
             await database
               .collection("notice_board")
               .doc("notice_board")
@@ -337,7 +357,7 @@ function Dashboard() {
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
-        <Grid container spacing={3}>
+        {/* <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
@@ -397,7 +417,7 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
-        </Grid>
+        </Grid>  */}
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={4}>
@@ -421,11 +441,11 @@ function Dashboard() {
                       </center>
                       <Divider />
                       <center>
-                        <a href="/notice_Board_School">
+                        <Link to={`/notice_Board_School`}>
                           <MDButton variant="gradient" color="dark">
                             &nbsp;Select
                           </MDButton>
-                        </a>
+                        </Link>
                       </center>
                     </MDBox>
                   </MDBox>
@@ -453,11 +473,11 @@ function Dashboard() {
                       </center>
                       <Divider />
                       <center>
-                        <a href="/notice_Board_Junior_College">
+                        <Link to={`/notice_Board_Junior_College`}>
                           <MDButton variant="gradient" color="dark">
                             &nbsp;Select
                           </MDButton>
-                        </a>
+                        </Link>
                       </center>
                     </MDBox>
                   </MDBox>
@@ -485,11 +505,11 @@ function Dashboard() {
                       </center>
                       <Divider />
                       <center>
-                        <a href="/notice_Board_Degree_College">
+                        <Link to={`/notice_Board_Degree_College`}>
                           <MDButton variant="gradient" color="dark">
                             &nbsp;Select
                           </MDButton>
-                        </a>
+                        </Link>
                       </center>
                     </MDBox>
                   </MDBox>
@@ -686,10 +706,11 @@ function Dashboard() {
                                 fontWeight="medium"
                                 textTransform="capitalize"
                               >
-                                {pdif
+                                {pdif.PdfText}
+                                {/* {pdif
                                   .slice(123)
                                   .split("?")[0]
-                                  .replaceAll("%", " ")}
+                                  .replaceAll("%", " ")} */}
                               </MDTypography>
 
                               <MDBox
@@ -712,8 +733,8 @@ function Dashboard() {
                                 <a
                                   target="_blank"
                                   rel="noreferrer noopener "
-                                  href={pdif}
-                                  download={pdif}
+                                  href={pdif.url}
+                                  download={pdif.url}
                                   rel="noopener"
                                   role="button"
                                 >
@@ -762,6 +783,19 @@ function Dashboard() {
                           setpdfProgress(0);
                         }}
                         required
+                      />
+                      <Divider />
+
+                      <TextField
+                        size="large"
+                        style={{ width: "100%" }}
+                        id="outlined-basic"
+                        label="Title"
+                        onChange={(e) => {
+                          setPdfText(e.target.value);
+                          setpdfProgress(0);
+                        }}
+                        variant="outlined"
                       />
                       <br />
                       <MDBox mt={3} mb={3}>

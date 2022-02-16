@@ -41,9 +41,13 @@
     "react-router-dom": "6.2.1",
     "react-scripts": "5.0.0",
     "react-table": "7.7.0",
+    "react-redux": "^7.2.1",
     "stylis": "4.0.13",
     "stylis-plugin-rtl": "2.1.1",
     "web-vitals": "2.1.4",
+    "react-toastify": "^6.0.9",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "uuid": "^8.3.1",
     "yup": "0.32.11"
   },

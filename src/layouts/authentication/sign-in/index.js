@@ -13,10 +13,10 @@ Coded by Srinivas&Dwarak
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -41,111 +41,106 @@ import BasicLayout from "layouts/authentication/components/BasicLayout";
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
-function Basic() {
+import { auth, googleAuthProvider } from "../../../firebase";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+
+const Basic = ({ history }) => {
   const [rememberMe, setRememberMe] = useState(false);
-
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const [email, setEmail] = useState("");
+  // const [ReEmail, setReEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  let dispatch = useDispatch();
 
+  const { user } = useSelector((state) => ({ ...state }));
+  useEffect(() => {
+    if (user && user.token) {
+      navigate("/dashboard");
+    } else {
+      navigate("/authentication/sign-in");
+    }
+  }, [user]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("email : ", email);
+    console.log("password : ", password);
+    console.log("form submitted");
+    const result = await auth.signInWithEmailAndPassword(email, password);
+    const { user } = result;
+    const idTokenResult = await user.getIdTokenResult();
+    dispatch({
+      type: "LOGGED_IN_USER",
+      payload: {
+        email: user.email,
+        token: idTokenResult.token,
+        uid: user.uid,
+      },
+    });
+    navigate("/dashboard");
+    // auth.signInWithEmailAndPassword(email, password).then((response) => {
+    //   navigate("/");
+    //   sessionStorage.setItem(
+    //     "Auth Token",
+    //     response._tokenResponse.refreshToken
+    //   );
+    // });
+    // try {
+    //   const result = await auth.signInWithEmailAndPassword(email, password);
+    //   console.log("resut : ogin page : ", result);
+    //   const { user } = result;
+    //   const idTokenResult = await user.getIdTokenResult();
+    //   dispatch({
+    //     type: "LOGGED_IN_USER",
+    //     payload: {
+    //       email: user.email,
+    //       token: idTokenResult.token,
+    //       uid: user.uid,
+    //     },
+    //   });
+    //   history.push("/");
+    // } catch (error) {
+    //   console.log(email, " adsa ", password);
+    //   toast.error(error.message);
+    // }
+  };
   return (
     <BasicLayout image={bgImage}>
       <Card>
-        <MDBox
-          variant="gradient"
-          bgColor="info"
-          borderRadius="lg"
-          coloredShadow="info"
-          mx={2}
-          mt={-3}
-          p={2}
-          mb={1}
-          textAlign="center"
-        >
-          <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Sign in
-          </MDTypography>
-          <Grid
-            container
-            spacing={3}
-            justifyContent="center"
-            sx={{ mt: 1, mb: 2 }}
-          >
-            <Grid item xs={2}>
-              <MDTypography
-                component={MuiLink}
-                href="#"
-                variant="body1"
-                color="white"
-              >
-                <FacebookIcon color="inherit" />
-              </MDTypography>
-            </Grid>
-            <Grid item xs={2}>
-              <MDTypography
-                component={MuiLink}
-                href="#"
-                variant="body1"
-                color="white"
-              >
-                <GitHubIcon color="inherit" />
-              </MDTypography>
-            </Grid>
-            <Grid item xs={2}>
-              <MDTypography
-                component={MuiLink}
-                href="#"
-                variant="body1"
-                color="white"
-              >
-                <GoogleIcon color="inherit" />
-              </MDTypography>
-            </Grid>
-          </Grid>
-        </MDBox>
         <MDBox pt={4} pb={3} px={3}>
-          <MDBox component="form" role="form">
-            <MDBox mb={2}>
-              <MDInput type="email" label="Email" fullWidth />
+          <form onSubmit={handleSubmit}>
+            <MDBox>
+              <MDBox mb={2}>
+                <MDInput
+                  type="email"
+                  label="Email"
+                  fullWidth
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </MDBox>
+              <MDBox mb={2}>
+                <MDInput
+                  type="password"
+                  label="Password"
+                  fullWidth
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </MDBox>
+              <MDBox mt={4} mb={1}>
+                <button type="submit">
+                  <MDButton variant="gradient" color="info" fullWidth>
+                    sign in
+                  </MDButton>
+                </button>
+              </MDBox>
             </MDBox>
-            <MDBox mb={2}>
-              <MDInput type="password" label="Password" fullWidth />
-            </MDBox>
-            <MDBox display="flex" alignItems="center" ml={-1}>
-              <Switch checked={rememberMe} onChange={handleSetRememberMe} />
-              <MDTypography
-                variant="button"
-                fontWeight="regular"
-                color="text"
-                onClick={handleSetRememberMe}
-                sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
-              >
-                &nbsp;&nbsp;Remember me
-              </MDTypography>
-            </MDBox>
-            <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
-                sign in
-              </MDButton>
-            </MDBox>
-            <MDBox mt={3} mb={1} textAlign="center">
-              <MDTypography variant="button" color="text">
-                Don&apos;t have an account?{" "}
-                <MDTypography
-                  component={Link}
-                  to="/authentication/sign-up"
-                  variant="button"
-                  color="info"
-                  fontWeight="medium"
-                  textGradient
-                >
-                  Sign up
-                </MDTypography>
-              </MDTypography>
-            </MDBox>
-          </MDBox>
+          </form>
         </MDBox>
       </Card>
     </BasicLayout>
   );
-}
+};
 
 export default Basic;
