@@ -42,10 +42,27 @@ import NoticeBoardJnrClg from "layouts/NoticeBoardJnrClg";
 import NoticeBoardDgClg from "layouts/NoticeBoardDgClg";
 import Notifications from "layouts/notifications";
 import SignIn from "layouts/authentication/sign-in";
-
+import React, { useState, useEffect } from "react";
+import Register from "layouts/authentication/Register";
 // @mui icons
 import Icon from "@mui/material/Icon";
-
+// const [isloggedin, setisloggedin] = useState(false);
+// useEffect(() => {
+//   if (user && user.token) {
+//     setisloggedin(true);
+//   } else {
+//     setisloggedin(false);
+//   }
+// }, [user]);
+// useEffect(() => {
+//   firebase.auth().onAuthStateChanged(async function (user) {
+//     if (!user) {
+//       setisloggedin(false);
+//     } else {
+//       setisloggedin(true);
+//     }
+//   });
+// }, []);
 const routes = [
   {
     type: "collapse",
@@ -126,6 +143,14 @@ const routes = [
     icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
     component: <SignIn />,
+  },
+  {
+    type: "collapse",
+    name: "Register",
+    key: "register",
+    icon: <Icon fontSize="small">Register</Icon>,
+    route: "/authentication/Register",
+    component: <Register />,
   },
 ];
 

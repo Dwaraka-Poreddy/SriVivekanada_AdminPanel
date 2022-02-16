@@ -59,20 +59,30 @@ const Basic = ({ history }) => {
   const [AuthLoginErrorSB, setAuthLoginErrorSB] = useState(false);
   const openAuthLoginErrorSB = () => setAuthLoginErrorSB(true);
   const closeAuthLoginErrorSB = () => setAuthLoginErrorSB(false);
+  const [RegistersuccessSB, setRegistersuccessSB] = useState(false);
+  const closeRegistersuccessSB = () => setRegistersuccessSB(false);
+  const openRegistersuccessSB = () => setRegistersuccessSB(true);
+
   const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
     if (user && user.token) {
-      navigate("/dashboard");
     } else {
       navigate("/authentication/sign-in");
     }
   }, [user]);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(async function (user) {
+      if (!user) {
+        history.push("/authentication/sign-in");
+      }
+    });
+  }, []);
   const renderAuthLoginErrorSB = (
     <MDSnackbar
       color="error"
       icon="warning"
       title="Notice Board"
-      content="Login Credentials incorrect!"
+      content="User  with this username already exists!"
       dateTime="just now"
       open={AuthLoginErrorSB}
       onClose={closeAuthLoginErrorSB}
@@ -80,26 +90,31 @@ const Basic = ({ history }) => {
       bgWhite
     />
   );
+  const renderRegistersuccessSB = (
+    <MDSnackbar
+      color="success"
+      icon="check"
+      title="Notice Board"
+      content="New user created successfully!"
+      dateTime="just now"
+      open={RegistersuccessSB}
+      onClose={closeRegistersuccessSB}
+      close={closeRegistersuccessSB}
+      bgWhite
+    />
+  );
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("email : ", email);
-    console.log("password : ", password);
-    console.log("form submitted");
-
-    const snapshot = await database.collection("Admin_Auth").doc(email).get();
-    console.log("authentication: ", snapshot.data());
-    if (password === snapshot.data().password) {
-      dispatch({
-        type: "LOGGED_IN_USER",
-        payload: {
-          email: email,
-          token: email,
-        },
-      });
-      navigate("/dashboard");
+    const snipshot = await database.collection("Admin_Auth").doc(email).get();
+    if (!snipshot.data()) {
+      console.log("inside snipdata");
+      const snapshot = await database
+        .collection("Admin_Auth")
+        .doc(`${email}`)
+        .set({ password: password }, { merge: true });
+      openRegistersuccessSB();
     } else {
       openAuthLoginErrorSB();
-      console.log("wrong credentials");
     }
 
     // const result = await auth.signInWithEmailAndPassword(email, password);
@@ -143,6 +158,7 @@ const Basic = ({ history }) => {
   return (
     <BasicLayout image={bgImage}>
       {renderAuthLoginErrorSB}
+      {renderRegistersuccessSB}
       <Card>
         <MDBox pt={4} pb={3} px={3}>
           <form onSubmit={handleSubmit}>
@@ -166,7 +182,7 @@ const Basic = ({ history }) => {
               <MDBox mt={4} mb={1}>
                 <button type="submit">
                   <MDButton variant="gradient" color="info" fullWidth>
-                    sign in
+                    Register
                   </MDButton>
                 </button>
               </MDBox>
