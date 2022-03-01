@@ -62,7 +62,7 @@ const Basic = ({ history }) => {
   const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
     if (user) {
-      navigate("/dashboard");
+      navigate("/about_us");
     }
   }, [user]);
   const renderAuthLoginErrorSB = (
@@ -88,8 +88,7 @@ const Basic = ({ history }) => {
     console.log("authentication: ", snapshot.data());
     if (password === snapshot.data().password) {
       sessionStorage.setItem("user1", email);
-      // window.localStorage.setItem("user", email);
-      navigate("/dashboard");
+      navigate("/about_us");
       dispatch({
         type: "LOGGED_IN_USER",
         payload: {
@@ -113,7 +112,7 @@ const Basic = ({ history }) => {
     //     uid: user.uid,
     //   },
     // });
-    // navigate("/dashboard");
+    // navigate("/about_us");
 
     // auth.signInWithEmailAndPassword(email, password).then((response) => {
     //   navigate("/");

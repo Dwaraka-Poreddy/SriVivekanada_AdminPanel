@@ -128,7 +128,7 @@ const Basic = ({ history }) => {
     //     uid: user.uid,
     //   },
     // });
-    // navigate("/dashboard");
+    // navigate("/about_us");
 
     // auth.signInWithEmailAndPassword(email, password).then((response) => {
     //   navigate("/");

@@ -19,7 +19,7 @@ function Footer({ company, links }) {
   const renderLinks = () =>
     links.map((link) => (
       <MDBox key={link.name} component="li" px={2} lineHeight={1}>
-        <Link href={link.href} target="_blank">
+        <Link href={link.href}>
           <MDTypography variant="button" fontWeight="medium" color="primary">
             {link.name}
           </MDTypography>
@@ -81,12 +81,13 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://Srinivas&Dwarak/", name: "Creative Tim" },
+  company: { href: "https://Srinivas&Dwarak/", name: "Srinivas Dwarak" },
   links: [
-    { href: "https://google.com/", name: "Our College" },
-    { href: "https://google.com/", name: "About Us" },
-    { href: "https://google.com/", name: "Time table" },
-    { href: "https://google.com/", name: "Notice Board" },
+    { href: "/notice_Board_School", name: "Notice Board" },
+    { href: "/time_table_School", name: "Time table" },
+    { href: "/exams_results_School", name: "Exams & Results" },
+    { href: "/activities_School", name: "Activities" },
+    { href: "/about_us", name: "About Us" },
   ],
 };
 

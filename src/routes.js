@@ -74,35 +74,35 @@ import Icon from "@mui/material/Icon";
 //   });
 // }, []);
 const routes = [
+  // {
+  //   type: "collapse",
+  //   name: "Dashboard",
+  //   key: "dashboard",
+  //   icon: <Icon fontSize="small">dashboard</Icon>,
+  //   route: "/dashboard",
+  //   component: <Dashboard />,
+  // },
   {
     type: "collapse",
-    name: "Dashboard",
-    key: "dashboard",
-    icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/dashboard",
-    component: <Dashboard />,
-  },
-  {
-    type: "collapse",
-    name: "NoticeBoard",
+    name: "Notice Board",
     key: "notice",
-    icon: <Icon fontSize="small">table</Icon>,
+    icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
   {
     type: "title",
-    name: "NoticeBoard",
+    name: "Notice Board",
     key: "notice",
-    icon: <Icon fontSize="small">NoticeBoard</Icon>,
+    icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/notice_Board_Junior_College",
     component: <NoticeBoardJnrClg />,
   },
   {
     type: "title",
-    name: "NoticeBoard",
+    name: "Notice Board",
     key: "notice",
-    icon: <Icon fontSize="small">NoticeBoard</Icon>,
+    icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/notice_Board_Degree_College",
     component: <NoticeBoardDgClg />,
   },
@@ -202,7 +202,22 @@ const routes = [
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
-
+  {
+    type: "collapse",
+    name: "Fees",
+    key: "fees",
+    icon: <Icon fontSize="small">currency_rupee</Icon>,
+    route: "/about_us",
+    component: <AboutUs />,
+  },
+  {
+    type: "title",
+    name: "Fees",
+    key: "fees",
+    icon: <Icon fontSize="small">currency_rupee</Icon>,
+    route: "/about_us",
+    component: <AboutUs />,
+  },
   {
     type: "collapse",
     name: "About Us",
