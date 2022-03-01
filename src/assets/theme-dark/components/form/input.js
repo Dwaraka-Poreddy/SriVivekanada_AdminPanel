@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -13,12 +13,12 @@ Coded by Srinivas&Dwarak
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-// Sri Vivekananda React Base Styles
+// Sri Vivekananda Base Styles
 import colors from "assets/theme-dark/base/colors";
 import typography from "assets/theme-dark/base/typography";
 import borders from "assets/theme-dark/base/borders";
 
-// Sri Vivekananda React Helper Functions
+// Sri Vivekananda Helper Functions
 import rgba from "assets/theme-dark/functions/rgba";
 
 const { info, inputBorderColor, dark, grey, white } = colors;

@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -25,19 +25,19 @@ import PropTypes from "prop-types";
 import Container from "@mui/material/Container";
 import Icon from "@mui/material/Icon";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 
-// Sri Vivekananda React example components
+// Sri Vivekananda example components
 import DefaultNavbarLink from "examples/Navbars/DefaultNavbar/DefaultNavbarLink";
 import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMobile";
 
-// Sri Vivekananda React base styles
+// Sri Vivekananda base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-// Sri Vivekananda React context
+// Sri Vivekananda context
 import { useMaterialUIController } from "context";
 
 function DefaultNavbar({ transparent, light, action }) {
@@ -125,13 +125,14 @@ function DefaultNavbar({ transparent, light, action }) {
             route="/dashboard"
             light={light}
           />
-          <DefaultNavbarLink
+          {/* <DefaultNavbarLink
+            color="primary"
             icon="person"
             name="profile"
             route="/profile"
             light={light}
-          />
-          <DefaultNavbarLink
+          /> */}
+          {/* <DefaultNavbarLink
             icon="account_circle"
             name="sign up"
             route="/authentication/sign-up"
@@ -142,7 +143,7 @@ function DefaultNavbar({ transparent, light, action }) {
             name="sign in"
             route="/authentication/sign-in"
             light={light}
-          />
+          /> */}
         </MDBox>
         {action &&
           (action.type === "internal" ? (

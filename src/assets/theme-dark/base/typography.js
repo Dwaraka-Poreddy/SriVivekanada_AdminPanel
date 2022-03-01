@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -19,10 +19,10 @@ Coded by Srinivas&Dwarak
  * You can customized the typography styles for the entire Sri Vivekananda PRO React using thie file.
  */
 
-// Sri Vivekananda React Base Styles
+// Sri Vivekananda Base Styles
 import colors from "assets/theme-dark/base/colors";
 
-// Sri Vivekananda React Helper Functions
+// Sri Vivekananda Helper Functions
 import pxToRem from "assets/theme-dark/functions/pxToRem";
 
 const { white } = colors;

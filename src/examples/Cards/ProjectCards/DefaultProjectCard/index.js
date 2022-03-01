@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -24,7 +24,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Tooltip from "@mui/material/Tooltip";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";

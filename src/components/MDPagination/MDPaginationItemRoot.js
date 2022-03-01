@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -16,7 +16,7 @@ Coded by Srinivas&Dwarak
 // @mui material components
 import { styled } from "@mui/material/styles";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDButton from "components/MDButton";
 
 export default styled(MDButton)(({ theme, ownerState }) => {

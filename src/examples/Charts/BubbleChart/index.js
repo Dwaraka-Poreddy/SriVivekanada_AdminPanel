@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -25,14 +25,14 @@ import { Bubble } from "react-chartjs-2";
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 // BubbleChart configurations
 import configs from "examples/Charts/BubbleChart/configs";
 
-// Sri Vivekananda React base styles
+// Sri Vivekananda base styles
 import colors from "assets/theme/base/colors";
 
 function BubbleChart({ icon, title, description, height, chart }) {

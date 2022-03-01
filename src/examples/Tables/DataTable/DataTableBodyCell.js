@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -16,7 +16,7 @@ Coded by Srinivas&Dwarak
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 
 function DataTableBodyCell({ noBorder, align, children }) {

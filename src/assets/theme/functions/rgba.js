@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -18,7 +18,7 @@ Coded by Srinivas&Dwarak
   to convert the hex code into rgb for using it inside the rgba color format.
  */
 
-// Sri Vivekananda React helper functions
+// Sri Vivekananda helper functions
 import hexToRgb from "assets/theme/functions/hexToRgb";
 
 function rgba(color, opacity) {

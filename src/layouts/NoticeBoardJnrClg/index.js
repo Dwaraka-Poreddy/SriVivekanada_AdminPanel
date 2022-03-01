@@ -1,7 +1,7 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,7 +16,7 @@ import MDTypography from "components/MDTypography";
 
 import bgImage from "assets/images/bg-reset-cover.jpeg";
 
-// Sri Vivekananda React example components
+// Sri Vivekananda example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";

@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -23,13 +23,13 @@ import { createContext, useContext, useReducer, useMemo } from "react";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-// Sri Vivekananda React main context
+// Sri Vivekananda main context
 const MaterialUI = createContext();
 
 // Setting custom name for the context which is visible on react dev tools
 MaterialUI.displayName = "MaterialUIContext";
 
-// Sri Vivekananda React reducer
+// Sri Vivekananda reducer
 function reducer(state, action) {
   switch (action.type) {
     case "MINI_SIDENAV": {
@@ -68,15 +68,15 @@ function reducer(state, action) {
   }
 }
 
-// Sri Vivekananda React context provider
+// Sri Vivekananda context provider
 function MaterialUIControllerProvider({ children }) {
   const initialState = {
     miniSidenav: false,
     transparentSidenav: false,
-    whiteSidenav: false,
-    sidenavColor: "info",
+    whiteSidenav: true,
+    sidenavColor: "primary",
     transparentNavbar: true,
-    fixedNavbar: true,
+    fixedNavbar: false,
     openConfigurator: false,
     direction: "ltr",
     layout: "dashboard",
@@ -90,7 +90,7 @@ function MaterialUIControllerProvider({ children }) {
   return <MaterialUI.Provider value={value}>{children}</MaterialUI.Provider>;
 }
 
-// Sri Vivekananda React custom hook for using context
+// Sri Vivekananda custom hook for using context
 function useMaterialUIController() {
   const context = useContext(MaterialUI);
 
@@ -120,7 +120,7 @@ const setSidenavColor = (dispatch, value) =>
 const setTransparentNavbar = (dispatch, value) =>
   dispatch({ type: "TRANSPARENT_NAVBAR", value });
 const setFixedNavbar = (dispatch, value) =>
-  dispatch({ type: "FIXED_NAVBAR", value });
+  dispatch({ type: "FIXED_NAVBAR", fixedNavbar });
 const setOpenConfigurator = (dispatch, value) =>
   dispatch({ type: "OPEN_CONFIGURATOR", value });
 const setDirection = (dispatch, value) =>

@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -29,7 +29,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
@@ -39,7 +39,7 @@ import MDButton from "components/MDButton";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 
 // Images
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/full_Logo.png";
 
 import { auth, googleAuthProvider } from "../../../firebase";
 import { useDispatch } from "react-redux";
@@ -61,10 +61,8 @@ const Basic = ({ history }) => {
   const closeAuthLoginErrorSB = () => setAuthLoginErrorSB(false);
   const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
-    if (user && user.token) {
+    if (user) {
       navigate("/dashboard");
-    } else {
-      navigate("/authentication/sign-in");
     }
   }, [user]);
   const renderAuthLoginErrorSB = (
@@ -89,6 +87,9 @@ const Basic = ({ history }) => {
     const snapshot = await database.collection("Admin_Auth").doc(email).get();
     console.log("authentication: ", snapshot.data());
     if (password === snapshot.data().password) {
+      sessionStorage.setItem("user1", email);
+      // window.localStorage.setItem("user", email);
+      navigate("/dashboard");
       dispatch({
         type: "LOGGED_IN_USER",
         payload: {
@@ -96,7 +97,6 @@ const Basic = ({ history }) => {
           token: email,
         },
       });
-      navigate("/dashboard");
     } else {
       openAuthLoginErrorSB();
       console.log("wrong credentials");
@@ -141,14 +141,28 @@ const Basic = ({ history }) => {
     // }
   };
   return (
-    <BasicLayout image={bgImage}>
+    <BasicLayout
+    // image={bgImage}
+    >
       {renderAuthLoginErrorSB}
       <Card>
+        <MDBox pt={4} pb={3} mx={3}>
+          <img
+            style={{
+              width: "100%",
+            }}
+            className="d-block  img-fluid"
+            src={bgImage}
+            alt="First slide"
+          />
+        </MDBox>
+
         <MDBox pt={4} pb={3} px={3}>
           <form onSubmit={handleSubmit}>
-            <MDBox>
-              <MDBox mb={2}>
+            <MDBox color="primary">
+              <MDBox mb={2} color="primary">
                 <MDInput
+                  color="primary"
                   type="email"
                   label="Email"
                   fullWidth
@@ -164,8 +178,11 @@ const Basic = ({ history }) => {
                 />
               </MDBox>
               <MDBox mt={4} mb={1}>
-                <button type="submit">
-                  <MDButton variant="gradient" color="info" fullWidth>
+                <button
+                  type="submit"
+                  style={{ borderWidth: "0", width: "100%" }}
+                >
+                  <MDButton variant="gradient" color="primary" fullWidth>
                     sign in
                   </MDButton>
                 </button>

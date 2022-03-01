@@ -8,18 +8,18 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Icon from "@mui/material/Icon";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 
-// Sri Vivekananda React example components
+// Sri Vivekananda example components
 import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 
-// Sri Vivekananda React themes
+// Sri Vivekananda themes
 import theme from "assets/theme";
 import themeRTL from "assets/theme/theme-rtl";
 
-// Sri Vivekananda React Dark Mode themes
+// Sri Vivekananda Dark Mode themes
 import themeDark from "assets/theme-dark";
 import themeDarkRTL from "assets/theme-dark/theme-rtl";
 
@@ -28,10 +28,10 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 
-// Sri Vivekananda React routes
+// Sri Vivekananda routes
 import routes from "routes";
 
-// Sri Vivekananda React contexts
+// Sri Vivekananda contexts
 import {
   useMaterialUIController,
   setMiniSidenav,
@@ -162,7 +162,7 @@ export default function App() {
               onMouseLeave={handleOnMouseLeave}
             />
             <Configurator />
-            {configsButton}
+            {/* {configsButton} */}
           </>
         )}
         {layout === "vr" && <Configurator />}
@@ -190,7 +190,7 @@ export default function App() {
             onMouseLeave={handleOnMouseLeave}
           />
           <Configurator />
-          {configsButton}
+          {/* {configsButton} */}
         </>
       )}
       {layout === "vr" && <Configurator />}

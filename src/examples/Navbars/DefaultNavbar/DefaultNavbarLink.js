@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 // @mui material components
 import Icon from "@mui/material/Icon";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
@@ -38,9 +38,9 @@ function DefaultNavbarLink({ icon, name, route, light }) {
       sx={{ cursor: "pointer", userSelect: "none" }}
     >
       <Icon
+        color="primary"
         sx={{
-          color: ({ palette: { white, secondary } }) =>
-            light ? white.main : secondary.main,
+          color: "#fb4787",
           verticalAlign: "middle",
         }}
       >

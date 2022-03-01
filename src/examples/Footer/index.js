@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
-// Sri Vivekananda React base styles
+// Sri Vivekananda base styles
 import typography from "assets/theme/base/typography";
 
 function Footer({ company, links }) {
@@ -20,7 +20,7 @@ function Footer({ company, links }) {
     links.map((link) => (
       <MDBox key={link.name} component="li" px={2} lineHeight={1}>
         <Link href={link.href} target="_blank">
-          <MDTypography variant="button" fontWeight="regular" color="text">
+          <MDTypography variant="button" fontWeight="medium" color="primary">
             {link.name}
           </MDTypography>
         </Link>
@@ -47,16 +47,15 @@ function Footer({ company, links }) {
       >
         &copy; {new Date().getFullYear()}, made with
         <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon color="inherit" fontSize="inherit">
+          <Icon color="inherit" fontSize="inherit" color="primary">
             favorite
           </Icon>
         </MDBox>
-        by
-        <Link href={href} target="_blank">
+        {/* <Link href={href} target="_blank">
           <MDTypography variant="button" fontWeight="medium">
             &nbsp;Srinivas&nbsp;
           </MDTypography>
-        </Link>
+        </Link> */}
       </MDBox>
       <MDBox
         component="ul"
@@ -69,7 +68,6 @@ function Footer({ company, links }) {
           mt: 3,
           mb: 0,
           p: 0,
-
           [breakpoints.up("lg")]: {
             mt: 0,
           },

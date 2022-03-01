@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -13,7 +13,7 @@ Coded by Srinivas&Dwarak
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-// Sri Vivekananda React helper functions
+// Sri Vivekananda helper functions
 import pxToRem from "assets/theme/functions/pxToRem";
 
 const step = {

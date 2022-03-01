@@ -1,7 +1,7 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,9 +14,11 @@ import Card from "@mui/material/Card";
 
 import MDTypography from "components/MDTypography";
 
-import bgImage from "assets/images/bg-reset-cover.jpeg";
+import SbgImage from "assets/images/sv_school.jpg";
+import JbgImage from "assets/images/sv_jnrClg.png";
+import DbgImage from "assets/images/SV_Logo.png";
 
-// Sri Vivekananda React example components
+// Sri Vivekananda example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
@@ -63,29 +65,26 @@ function Dashboard({ history }) {
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
-    if (user && user.token) {
-      navigate("/dashboard");
-    } else {
+    var userLocal = sessionStorage.getItem("user1");
+    console.log("userLocal ", userLocal);
+    if (!userLocal) {
       navigate("/authentication/sign-in");
     }
-  }, [user]);
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(async function (user) {
-      if (!user) {
-        history.push("/authentication/sign-in");
-      } else {
-        await getDoc(user.uid);
-      }
-    });
   }, []);
+
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
         .collection("notice_board")
         .doc("notice_board")
         .get();
-      console.log("inside images useeffect");
+
       setimagesss(snapshot.data().images_array);
+      console.log(
+        "inside images useeffect, worry1",
+        snapshot.data().images_array
+      );
+      console.log("inside images useeffect, worry2", imagesss);
     };
     getContent();
   }, []);
@@ -183,9 +182,7 @@ function Dashboard({ history }) {
   );
   const HandleImageUpload = async (e) => {
     var ud = uuidv4();
-    console.log(ud);
     e.preventDefault();
-    console.log(e.target[0]);
     const file = e.target[0].files[0];
     const uploadTask = storage.ref(`/images/${ud + file.name}`).put(file);
     uploadTask.on(
@@ -206,8 +203,7 @@ function Dashboard({ history }) {
               .collection("notice_board")
               .doc("notice_board")
               .get();
-            console.log("namaste", snapshot.data().images_array);
-            var daty = snapshot.data().images_array;
+            var daty = await snapshot.data().images_array;
             const newdaty = { url, ImgText };
             daty.push(newdaty);
             await database
@@ -220,13 +216,7 @@ function Dashboard({ history }) {
                 { merge: true }
               );
             setImgsuccessSB(true);
-            const snapshot2 = await database
-              .collection("notice_board")
-              .doc("notice_board")
-              .get();
-            console.log("inside images useeffect");
-            setimagesss(snapshot2.data().images_array);
-
+            setimagesss(daty);
             document.getElementById("ImageUpload").reset();
             setimgProgress(0);
           });
@@ -307,26 +297,23 @@ function Dashboard({ history }) {
       .collection("notice_board")
       .doc("notice_board")
       .get();
-    var daty = snapshot.data().images_array;
-    console.log("beforedelete", daty);
-    console.log("inside del function id: ", id);
-
-    daty.splice(id, 1);
-    console.log("afterdelete", daty);
-
+    var daty = await snapshot.data().images_array;
+    if (id == daty.size - 1) {
+      daty.pop();
+    } else {
+      daty.splice(id, 1);
+    }
     await database.collection("notice_board").doc("notice_board").update(
       {
         images_array: daty,
       },
-      { merge: true }
+      { merge: true },
+      setimagesss(daty),
+      document.getElementById("ImageUpload").reset(),
+      setImgDeleteSB(true)
     );
-    setImgDeleteSB(true);
-    const snapshot2 = await database
-      .collection("notice_board")
-      .doc("notice_board")
-      .get();
-    console.log("inside images useeffect");
-    setimagesss(snapshot2.data().images_array);
+
+    window.location.reload();
   };
   const HandledeletePdf = async (id) => {
     const snapshot = await database
@@ -334,10 +321,7 @@ function Dashboard({ history }) {
       .doc("notice_board")
       .get();
     var daty = snapshot.data().pdfs_array;
-    console.log("beforedelete", daty);
     daty.splice(id, 1);
-    console.log("afterdelete", daty);
-
     await database.collection("notice_board").doc("notice_board").update(
       {
         pdfs_array: daty,
@@ -349,7 +333,6 @@ function Dashboard({ history }) {
       .collection("notice_board")
       .doc("notice_board")
       .get();
-    console.log("inside pdfs useeffect");
     setpdfsss(snapshot2.data().pdfs_array);
   };
 
@@ -357,81 +340,20 @@ function Dashboard({ history }) {
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
-        {/* <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="dark"
-                icon="weekend"
-                title="Professor"
-                count={281}
-                percentage={{
-                  color: "success",
-                  amount: "+5%",
-                  label: "than lask semester",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                icon="leaderboard"
-                title="Students"
-                count="2,890"
-                percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last year",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="success"
-                icon="store"
-                title="Revenue"
-                count="340k"
-                percentage={{
-                  color: "success",
-                  amount: "+18%",
-                  label: "than last year",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Attendence"
-                count="+91"
-                percentage={{
-                  color: "success",
-                  amount: "+3",
-                  label: "than last month",
-                }}
-              />
-            </MDBox>
-          </Grid>
-        </Grid>  */}
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={3}>
               <MDBox mb={3}>
                 <Card sx={{ height: "100%" }}>
                   <MDBox padding="1rem">
                     <img
                       style={{
-                        marginLeft: "35%",
-                        marginRight: "35%",
-                        width: "30%",
+                        marginLeft: "30%",
+                        marginRight: "30%",
+                        width: "40%",
                       }}
                       alt="test"
-                      src={bgImage}
+                      src={SbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
@@ -442,7 +364,7 @@ function Dashboard({ history }) {
                       <Divider />
                       <center>
                         <Link to={`/notice_Board_School`}>
-                          <MDButton variant="gradient" color="dark">
+                          <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
                         </Link>
@@ -452,18 +374,18 @@ function Dashboard({ history }) {
                 </Card>
               </MDBox>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={6}>
               <MDBox mb={3}>
                 <Card sx={{ height: "100%" }}>
                   <MDBox padding="1rem">
                     <img
                       style={{
-                        marginLeft: "35%",
-                        marginRight: "35%",
-                        width: "30%",
+                        marginLeft: "30%",
+                        marginRight: "30%",
+                        width: "40%",
                       }}
                       alt="test"
-                      src={bgImage}
+                      src={JbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
@@ -474,7 +396,7 @@ function Dashboard({ history }) {
                       <Divider />
                       <center>
                         <Link to={`/notice_Board_Junior_College`}>
-                          <MDButton variant="gradient" color="dark">
+                          <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
                         </Link>
@@ -484,18 +406,18 @@ function Dashboard({ history }) {
                 </Card>
               </MDBox>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={3}>
               <MDBox mb={3}>
                 <Card sx={{ height: "100%" }}>
                   <MDBox padding="1rem">
                     <img
                       style={{
-                        marginLeft: "35%",
-                        marginRight: "35%",
-                        width: "30%",
+                        marginLeft: "30%",
+                        marginRight: "30%",
+                        width: "40%",
                       }}
                       alt="test"
-                      src={bgImage}
+                      src={DbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
@@ -506,7 +428,7 @@ function Dashboard({ history }) {
                       <Divider />
                       <center>
                         <Link to={`/notice_Board_Degree_College`}>
-                          <MDButton variant="gradient" color="dark">
+                          <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
                         </Link>
@@ -520,7 +442,9 @@ function Dashboard({ history }) {
         </MDBox>
         <br /> <br />
         <center>
-          <h4>Dashboard Dummy</h4>
+          <MDTypography variant="h4" gutterBottom color="primary">
+            Notice Board - Junior College
+          </MDTypography>
         </center>
         <br />
         <MDBox>
@@ -543,26 +467,47 @@ function Dashboard({ history }) {
                 <MDBox p={4}>
                   <Carousel fade>
                     {imagesss.map((imag, id) => {
-                      const linky = imag.url;
                       return (
                         <Carousel.Item className="carouselImageBox">
-                          <div
+                          {/* <div
                             className="carouselImageDiv"
                             style={{
-                              backgroundImage: "url(" + linky + ")",
+                              backgroundImage: "url(" + imag.url + ")",
+                              backgroundSize: "cover",
                             }}
-                          ></div>
-                          {/* <img
+                          ></div> */}
+                          <img
                             style={{
-                              objectFit: "contain",
-                              objectPosition: "50% 50%",
+                              width: "100%",
                             }}
                             className="d-block  img-fluid"
                             src={imag.url}
                             alt="First slide"
-                          /> */}
+                          />
                           <Carousel.Caption>
-                            <h3>{imag.ImgText}</h3>
+                            <MDBox
+                              // component="li"
+                              // display="flex"
+                              // justifyContent="space-between"
+                              // alignItems="flex-start"
+                              variant="gradient"
+                              bgColor="dark"
+                              fullWidth
+                              borderRadius="lg"
+                              p={1}
+                              // mb={1}
+                              // mt={2}
+                            >
+                              <MDTypography
+                                variant="h6"
+                                fontWeight="medium"
+                                color="light"
+                              >
+                                {imag.ImgText}
+                              </MDTypography>
+                            </MDBox>
+
+                            {/* <h3>{imag.ImgText}</h3> */}
                             <MDBox mt={3} mb={3}>
                               <MDButton
                                 variant="gradient"
@@ -598,10 +543,10 @@ function Dashboard({ history }) {
                     <form onSubmit={HandleImageUpload} id="ImageUpload">
                       <input
                         style={{
-                          backgroundColor: "transparent",
+                          // backgroundColor: "#fb4787",
                           border: "1px solid lightgrey",
                           borderRadius: "8px",
-                          color: "#000",
+                          color: "#fb4787",
                           display: "block",
                           padding: "1em",
                           transition:
@@ -620,7 +565,7 @@ function Dashboard({ history }) {
 
                       <TextField
                         size="large"
-                        style={{ width: "100%" }}
+                        style={{ width: "100%", borderColor: "#fb4787" }}
                         id="outlined-basic"
                         label="Title"
                         onChange={(e) => {
@@ -634,7 +579,7 @@ function Dashboard({ history }) {
                         <MDButton
                           type="submit"
                           variant="gradient"
-                          color="success"
+                          color="primary"
                           fullWidth
                         >
                           Upload Image
@@ -644,8 +589,8 @@ function Dashboard({ history }) {
                     {imgProgress ? (
                       <ProgressBar
                         completed={imgProgress}
-                        bgColor="#71be1e"
-                        labelColor="#e80909"
+                        bgColor="#fb4787"
+                        labelColor="#fff"
                         labelSize="10 px"
                         animateOnRender
                       />
@@ -665,7 +610,11 @@ function Dashboard({ history }) {
             <Grid item xs={12} md={7}>
               <Card id="delete-account">
                 <MDBox pt={3} px={2}>
-                  <MDTypography variant="h6" fontWeight="medium">
+                  <MDTypography
+                    variant="h6"
+                    fontWeight="medium"
+                    color="primary"
+                  >
                     PDF Section
                   </MDTypography>
                 </MDBox>
@@ -758,7 +707,11 @@ function Dashboard({ history }) {
             <Grid item xs={12} md={5}>
               <Card sx={{ height: "100%" }}>
                 <MDBox pt={3} px={3}>
-                  <MDTypography variant="h6" fontWeight="medium">
+                  <MDTypography
+                    variant="h6"
+                    fontWeight="medium"
+                    color="primary"
+                  >
                     Upload Pdf Files
                   </MDTypography>
                   <MDBox mt={0} mb={2}>
@@ -766,10 +719,10 @@ function Dashboard({ history }) {
                       <Divider />
                       <input
                         style={{
-                          backgroundColor: "transparent",
+                          // backgroundColor: "#fb4787",
                           border: "1px solid lightgrey",
                           borderRadius: "8px",
-                          color: "#000",
+                          color: "#fb4787",
                           display: "block",
                           padding: "1em",
                           transition:
@@ -801,7 +754,7 @@ function Dashboard({ history }) {
                       <MDBox mt={3} mb={3}>
                         <MDButton
                           variant="gradient"
-                          color="success"
+                          color="primary"
                           type="submit"
                           fullWidth
                         >
@@ -824,10 +777,14 @@ function Dashboard({ history }) {
               </Card>
             </Grid>
 
-            <Grid item xl={12}>
+            <Grid item xs={12}>
               <Card sx={{ height: "100%" }}>
                 <MDBox pt={3} px={3}>
-                  <MDTypography variant="h6" fontWeight="medium">
+                  <MDTypography
+                    variant="h6"
+                    fontWeight="medium"
+                    color="primary"
+                  >
                     Upload Main Text
                   </MDTypography>
                   <MDBox mt={0} mb={2}>
@@ -849,7 +806,7 @@ function Dashboard({ history }) {
                         <center>
                           <MDButton
                             variant="gradient"
-                            color="success"
+                            color="primary"
                             type="submit"
                           >
                             Update Text

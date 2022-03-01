@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -14,7 +14,7 @@ Coded by Srinivas&Dwarak
 */
 
 /** 
-  All of the routes for the Sri Vivekananda React are added here,
+  All of the routes for the Sri Vivekananda are added here,
   You can add a new route, customize the routes and delete the routes here.
 
   Once you add a new route on this file it will be visible automatically on
@@ -35,7 +35,7 @@ Coded by Srinivas&Dwarak
   10. The `component` key is used to store the component of its route.
 */
 
-// Sri Vivekananda React layouts
+// Sri Vivekananda layouts
 import Dashboard from "layouts/dashboard";
 import NoticeBoardSchool from "layouts/NoticeBoardSchool";
 import NoticeBoardJnrClg from "layouts/NoticeBoardJnrClg";
@@ -76,7 +76,11 @@ const routes = [
     type: "collapse",
     name: "NoticeBoard ",
     key: "noticeboardschool",
-    icon: <Icon fontSize="small">NoticeBoard</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        table
+      </Icon>
+    ),
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
@@ -84,7 +88,11 @@ const routes = [
     type: "title",
     name: "NoticeBoard Junior Clg",
     key: "noticeboardjnrclg",
-    icon: <Icon fontSize="small">NoticeBoard</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        NoticeBoard
+      </Icon>
+    ),
     route: "/notice_Board_Junior_College",
     component: <NoticeBoardJnrClg />,
   },
@@ -92,7 +100,11 @@ const routes = [
     type: "title",
     name: "NoticeBoard Degree Clg",
     key: "noticeboarddegreeclg",
-    icon: <Icon fontSize="small">NoticeBoard</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary" color="primary">
+        NoticeBoard
+      </Icon>
+    ),
     route: "/notice_Board_Degree_College",
     component: <NoticeBoardDgClg />,
   },
@@ -100,7 +112,35 @@ const routes = [
     type: "collapse",
     name: "Time Table ",
     key: "timetableschool",
-    icon: <Icon fontSize="small">Time Table</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        table_chart
+      </Icon>
+    ),
+    route: "/notice_Board_School",
+    component: <NoticeBoardSchool />,
+  },
+  {
+    type: "title",
+    name: "Time Table ",
+    key: "timetableschool",
+    icon: (
+      <Icon fontSize="small" color="primary">
+        Time Table
+      </Icon>
+    ),
+    route: "/notice_Board_School",
+    component: <NoticeBoardSchool />,
+  },
+  {
+    type: "title",
+    name: "Time Table ",
+    key: "timetableschool",
+    icon: (
+      <Icon fontSize="small" color="primary">
+        Time Table
+      </Icon>
+    ),
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
@@ -108,15 +148,71 @@ const routes = [
     type: "collapse",
     name: "Study Material ",
     key: "studymaterialschool",
-    icon: <Icon fontSize="small">Study Material</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        auto_stories
+      </Icon>
+    ),
+    route: "/notice_Board_School",
+    component: <NoticeBoardSchool />,
+  },
+  {
+    type: "title",
+    name: "Study Material ",
+    key: "studymaterialschool",
+    icon: (
+      <Icon fontSize="small" color="primary">
+        Study Material
+      </Icon>
+    ),
+    route: "/notice_Board_School",
+    component: <NoticeBoardSchool />,
+  },
+  {
+    type: "title",
+    name: "Study Material ",
+    key: "studymaterialschool",
+    icon: (
+      <Icon fontSize="small" color="primary">
+        Study Material
+      </Icon>
+    ),
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
   {
     type: "collapse",
+    name: "Exams and Results  ",
+    key: "resultsschool",
+    icon: (
+      <Icon fontSize="small" color="primary">
+        star_outline
+      </Icon>
+    ),
+    route: "/notice_Board_School",
+    component: <NoticeBoardSchool />,
+  },
+  {
+    type: "title",
     name: "Results  ",
     key: "resultsschool",
-    icon: <Icon fontSize="small">Results</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        Results
+      </Icon>
+    ),
+    route: "/notice_Board_School",
+    component: <NoticeBoardSchool />,
+  },
+  {
+    type: "title",
+    name: "Results  ",
+    key: "resultsschool",
+    icon: (
+      <Icon fontSize="small" color="primary">
+        Results
+      </Icon>
+    ),
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
@@ -124,7 +220,11 @@ const routes = [
     type: "collapse",
     name: "About Us",
     key: "aboutus",
-    icon: <Icon fontSize="small">About Us</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        school
+      </Icon>
+    ),
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
@@ -137,18 +237,26 @@ const routes = [
   //   component: <Notifications />,
   // },
   {
-    type: "collapse",
+    type: "title",
     name: "Sign In",
     key: "sign-in",
-    icon: <Icon fontSize="small">login</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        login
+      </Icon>
+    ),
     route: "/authentication/sign-in",
     component: <SignIn />,
   },
   {
-    type: "collapse",
+    type: "title",
     name: "Register",
     key: "register",
-    icon: <Icon fontSize="small">Register</Icon>,
+    icon: (
+      <Icon fontSize="small" color="primary">
+        login
+      </Icon>
+    ),
     route: "/authentication/Register",
     component: <Register />,
   },

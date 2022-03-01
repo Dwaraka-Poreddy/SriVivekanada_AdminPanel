@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -45,10 +45,14 @@ const colors = {
   },
 
   primary: {
-    main: "#e91e63",
-    focus: "#e91e63",
+    main: "#fb4787",
+    focus: "#fb4787",
   },
 
+  primary2: {
+    main: "#fc444c",
+    focus: "#fc444c",
+  },
   secondary: {
     main: "#7b809a",
     focus: "#8f93a9",
@@ -98,8 +102,8 @@ const colors = {
 
   gradients: {
     primary: {
-      main: "#EC407A",
-      state: "#D81B60",
+      main: "#fb4787",
+      state: "#fb4787",
     },
 
     secondary: {
@@ -202,8 +206,8 @@ const colors = {
 
   badgeColors: {
     primary: {
-      background: "#f8b3ca",
-      text: "#cc084b",
+      background: "#fb4787",
+      text: "#fc433e",
     },
 
     secondary: {

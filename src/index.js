@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -23,17 +23,20 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/index";
-// Sri Vivekananda React Context Provider
+// Sri Vivekananda Context Provider
 import { MaterialUIControllerProvider } from "context";
+import { PersistGate } from "redux-persist/integration/react";
 const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
     <BrowserRouter>
       <MaterialUIControllerProvider>
         <App />
       </MaterialUIControllerProvider>
     </BrowserRouter>
+    {/* </PersistGate> */}
   </Provider>,
   document.getElementById("root")
 );

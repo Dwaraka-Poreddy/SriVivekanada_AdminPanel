@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -14,7 +14,7 @@ Coded by Srinivas&Dwarak
 */
 
 /* eslint-disable no-dupe-keys */
-// Sri Vivekananda React base styles
+// Sri Vivekananda base styles
 import colors from "assets/theme/base/colors";
 
 const { gradients, dark } = colors;

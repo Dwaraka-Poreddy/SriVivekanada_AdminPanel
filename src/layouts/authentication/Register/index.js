@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -29,7 +29,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
@@ -39,7 +39,7 @@ import MDButton from "components/MDButton";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 
 // Images
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/full_Logo.png";
 
 import { auth, googleAuthProvider } from "../../../firebase";
 import { useDispatch } from "react-redux";
@@ -156,10 +156,23 @@ const Basic = ({ history }) => {
     // }
   };
   return (
-    <BasicLayout image={bgImage}>
+    <BasicLayout
+    //  image={bgImage}
+    >
       {renderAuthLoginErrorSB}
       {renderRegistersuccessSB}
       <Card>
+        <MDBox pt={4} pb={3} mx={3}>
+          <img
+            style={{
+              width: "100%",
+            }}
+            className="d-block  img-fluid"
+            src={bgImage}
+            alt="First slide"
+          />
+        </MDBox>
+
         <MDBox pt={4} pb={3} px={3}>
           <form onSubmit={handleSubmit}>
             <MDBox>
@@ -180,8 +193,11 @@ const Basic = ({ history }) => {
                 />
               </MDBox>
               <MDBox mt={4} mb={1}>
-                <button type="submit">
-                  <MDButton variant="gradient" color="info" fullWidth>
+                <button
+                  type="submit"
+                  style={{ borderWidth: "0", width: "100%" }}
+                >
+                  <MDButton variant="gradient" color="primary" fullWidth>
                     Register
                   </MDButton>
                 </button>

@@ -1,7 +1,7 @@
 // @mui material components
 import Grid from "@mui/material/Grid";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,7 +16,7 @@ import MDTypography from "components/MDTypography";
 
 import bgImage from "assets/images/bg-reset-cover.jpeg";
 
-// Sri Vivekananda React example components
+// Sri Vivekananda example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
@@ -67,11 +67,13 @@ function Dashboard() {
 
   const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
-    if (user && user.token) {
-    } else {
+    var userLocal = sessionStorage.getItem("user1");
+    console.log("userLocal ", userLocal);
+    if (!userLocal) {
       navigate("/authentication/sign-in");
     }
-  }, [user]);
+  }, []);
+
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
@@ -218,9 +220,12 @@ function Dashboard() {
               .collection("notice_board_DegreeClg")
               .doc("notice_board_DegreeClg")
               .get();
-            console.log("inside images useeffect");
+            console.log(
+              "inside images upload function",
+              snapshot2.data().images_array
+            );
             setimagesss(snapshot2.data().images_array);
-
+            console.log("inside images upload function, imagesss", imagesss);
             document.getElementById("ImageUpload").reset();
             setimgProgress(0);
           });
@@ -554,6 +559,7 @@ function Dashboard() {
                             className="carouselImageDiv"
                             style={{
                               backgroundImage: "url(" + linky + ")",
+                              backgroundSize: "cover",
                             }}
                           ></div>
                           {/* <img

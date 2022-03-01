@@ -21,7 +21,7 @@ import PropTypes from "prop-types";
 // Custom styles for MDButton
 import MDButtonRoot from "components/MDButton/MDButtonRoot";
 
-// Sri Vivekananda React contexts
+// Sri Vivekananda contexts
 import { useMaterialUIController } from "context";
 
 const MDButton = forwardRef(

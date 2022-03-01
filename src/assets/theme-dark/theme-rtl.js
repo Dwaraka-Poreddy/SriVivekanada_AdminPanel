@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -17,7 +17,7 @@ Coded by Srinivas&Dwarak
 import { createTheme } from "@mui/material/styles";
 // import Fade from "@mui/material/Fade";
 
-// Sri Vivekananda React base styles
+// Sri Vivekananda base styles
 import colors from "assets/theme-dark/base/colors";
 import breakpoints from "assets/theme-dark/base/breakpoints";
 import typography from "assets/theme-dark/base/typography";
@@ -25,14 +25,14 @@ import boxShadows from "assets/theme-dark/base/boxShadows";
 import borders from "assets/theme-dark/base/borders";
 import globals from "assets/theme-dark/base/globals";
 
-// Sri Vivekananda React helper functions
+// Sri Vivekananda helper functions
 import boxShadow from "assets/theme-dark/functions/boxShadow";
 import hexToRgb from "assets/theme-dark/functions/hexToRgb";
 import linearGradient from "assets/theme-dark/functions/linearGradient";
 import pxToRem from "assets/theme-dark/functions/pxToRem";
 import rgba from "assets/theme-dark/functions/rgba";
 
-// Sri Vivekananda React components base styles for @mui material components
+// Sri Vivekananda components base styles for @mui material components
 import sidenav from "assets/theme-dark/components/sidenav";
 import list from "assets/theme-dark/components/list";
 import listItem from "assets/theme-dark/components/list/listItem";

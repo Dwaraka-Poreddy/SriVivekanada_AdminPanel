@@ -34,6 +34,8 @@ function collapseItem(theme, ownerState) {
       (transparentSidenav && !darkMode && !active) || (whiteSidenav && !active)
         ? dark.main
         : white.main,
+    // color: active ? "#fff" : "#fb4787",
+
     display: "flex",
     alignItems: "center",
     width: "100%",
@@ -80,10 +82,11 @@ function collapseIconBox(theme, ownerState) {
   return {
     minWidth: pxToRem(32),
     minHeight: pxToRem(32),
-    color:
-      (transparentSidenav && !darkMode && !active) || (whiteSidenav && !active)
-        ? dark.main
-        : white.main,
+    // color:
+    //   (transparentSidenav && !darkMode && !active) || (whiteSidenav && !active)
+    //     ? dark.main
+    //     : white.main,
+    color: active ? "#ffffff" : "#fb4787",
     borderRadius: borderRadius.md,
     display: "grid",
     placeItems: "center",

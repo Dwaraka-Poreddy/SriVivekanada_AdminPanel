@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -19,10 +19,10 @@ import PropTypes from "prop-types";
 // @mui material components
 import Grid from "@mui/material/Grid";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 
-// Sri Vivekananda React example components
+// Sri Vivekananda example components
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
@@ -33,12 +33,12 @@ function BasicLayout({ image, children }) {
   return (
     <PageLayout>
       <DefaultNavbar
-        action={{
-          type: "external",
-          route: "https://creative-tim.com/product/Srinivas&Dwarak",
-          label: "free download",
-          color: "dark",
-        }}
+      // action={{
+      //   type: "external",
+      //   route: "https://creative-tim.com/product/Srinivas&Dwarak",
+      //   label: "free download",
+      //   color: "dark",
+      // }}
       />
       <MDBox
         position="absolute"
@@ -72,7 +72,7 @@ function BasicLayout({ image, children }) {
           </Grid>
         </Grid>
       </MDBox>
-      <Footer light />
+      <Footer />
     </PageLayout>
   );
 }

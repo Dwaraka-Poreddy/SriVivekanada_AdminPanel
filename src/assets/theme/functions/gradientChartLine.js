@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -17,7 +17,7 @@ Coded by Srinivas&Dwarak
   The gradientChartLine() function helps you to create a gradient color for the chart line
  */
 
-// Sri Vivekananda React helper functions
+// Sri Vivekananda helper functions
 import rgba from "assets/theme/functions/rgba";
 
 function gradientChartLine(chart, color, opacity = 0.2) {

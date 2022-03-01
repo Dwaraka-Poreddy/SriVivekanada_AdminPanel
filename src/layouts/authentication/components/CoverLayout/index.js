@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Sri Vivekananda React - v2.1.0
+* Sri Vivekananda - v2.1.0
 =========================================================
 
 * Product Page: https://Srinivas&Dwarak/product/Srinivas&Dwarak
@@ -19,11 +19,11 @@ import PropTypes from "prop-types";
 // @mui material components
 import Grid from "@mui/material/Grid";
 
-// Sri Vivekananda React components
+// Sri Vivekananda components
 import MDBox from "components/MDBox";
 // import MDTypography from "components/MDTypography";
 
-// Sri Vivekananda React example components
+// Sri Vivekananda example components
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
@@ -34,11 +34,11 @@ function CoverLayout({ coverHeight, image, children }) {
   return (
     <PageLayout>
       <DefaultNavbar
-        action={{
-          type: "external",
-          route: "https://creative-tim.com/product/Srinivas&Dwarak",
-          label: "free download",
-        }}
+        // action={{
+        //   type: "external",
+        //   route: "https://creative-tim.com/product/Srinivas&Dwarak",
+        //   label: "free download",
+        // }}
         transparent
         light
       />
