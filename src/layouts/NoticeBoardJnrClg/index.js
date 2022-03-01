@@ -14,7 +14,9 @@ import Card from "@mui/material/Card";
 
 import MDTypography from "components/MDTypography";
 
-import bgImage from "assets/images/bg-reset-cover.jpeg";
+import SbgImage from "assets/images/sv_school.jpg";
+import JbgImage from "assets/images/sv_jnrClg.png";
+import DbgImage from "assets/images/SV_Logo.png";
 
 // Sri Vivekananda example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -26,6 +28,7 @@ import { Divider, TextField } from "@mui/material";
 
 //New changes by Dwarak
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import firebase from "../.././firebase";
 import { storage } from "../.././firebase";
 import { v4 as uuidv4 } from "uuid";
@@ -34,9 +37,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import MDSnackbar from "components/MDSnackbar";
 import "../index.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-function Dashboard() {
+function Dashboard({ history }) {
   const database = firebase.firestore();
   const [imgProgress, setimgProgress] = useState(0);
   const [pdfProgress, setpdfProgress] = useState(0);
@@ -62,23 +63,28 @@ function Dashboard() {
   const openPdfDeleteSB = () => setPdfDeleteSB(true);
   const closePdfDeleteSB = () => setPdfDeleteSB(false);
   const navigate = useNavigate();
-  let dispatch = useDispatch();
-
   const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
-    if (user && user.token) {
-    } else {
+    var userLocal = sessionStorage.getItem("user1");
+    console.log("userLocal ", userLocal);
+    if (!userLocal) {
       navigate("/authentication/sign-in");
     }
-  }, [user]);
+  }, []);
+
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
         .collection("notice_board_JnrClg")
         .doc("notice_board_JnrClg")
         .get();
-      console.log("inside images useeffect");
+
       setimagesss(snapshot.data().images_array);
+      console.log(
+        "inside images useeffect, worry1",
+        snapshot.data().images_array
+      );
+      console.log("inside images useeffect, worry2", imagesss);
     };
     getContent();
   }, []);
@@ -111,7 +117,7 @@ function Dashboard() {
 
   const renderImgsuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Notice Board"
       content="Image along with text uploaded successfully!"
@@ -124,7 +130,7 @@ function Dashboard() {
   );
   const renderPdfsuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Notice Board"
       content="PDF uploaded successfully!"
@@ -137,7 +143,7 @@ function Dashboard() {
   );
   const renderTextsuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Notice Board"
       content="Text updated successfully!"
@@ -176,9 +182,7 @@ function Dashboard() {
   );
   const HandleImageUpload = async (e) => {
     var ud = uuidv4();
-    console.log(ud);
     e.preventDefault();
-    console.log(e.target[0]);
     const file = e.target[0].files[0];
     const uploadTask = storage.ref(`/images/${ud + file.name}`).put(file);
     uploadTask.on(
@@ -199,8 +203,7 @@ function Dashboard() {
               .collection("notice_board_JnrClg")
               .doc("notice_board_JnrClg")
               .get();
-            console.log("namaste", snapshot.data().images_array);
-            var daty = snapshot.data().images_array;
+            var daty = await snapshot.data().images_array;
             const newdaty = { url, ImgText };
             daty.push(newdaty);
             await database
@@ -213,13 +216,7 @@ function Dashboard() {
                 { merge: true }
               );
             setImgsuccessSB(true);
-            const snapshot2 = await database
-              .collection("notice_board_JnrClg")
-              .doc("notice_board_JnrClg")
-              .get();
-            console.log("inside images useeffect");
-            setimagesss(snapshot2.data().images_array);
-
+            setimagesss(daty);
             document.getElementById("ImageUpload").reset();
             setimgProgress(0);
           });
@@ -303,13 +300,12 @@ function Dashboard() {
       .collection("notice_board_JnrClg")
       .doc("notice_board_JnrClg")
       .get();
-    var daty = snapshot.data().images_array;
-    console.log("beforedelete", daty);
-    console.log("inside del function id: ", id);
-
-    daty.splice(id, 1);
-    console.log("afterdelete", daty);
-
+    var daty = await snapshot.data().images_array;
+    if (id == daty.size - 1) {
+      daty.pop();
+    } else {
+      daty.splice(id, 1);
+    }
     await database
       .collection("notice_board_JnrClg")
       .doc("notice_board_JnrClg")
@@ -317,15 +313,13 @@ function Dashboard() {
         {
           images_array: daty,
         },
-        { merge: true }
+        { merge: true },
+        setimagesss(daty),
+        document.getElementById("ImageUpload").reset(),
+        setImgDeleteSB(true)
       );
-    setImgDeleteSB(true);
-    const snapshot2 = await database
-      .collection("notice_board_JnrClg")
-      .doc("notice_board_JnrClg")
-      .get();
-    console.log("inside images useeffect");
-    setimagesss(snapshot2.data().images_array);
+
+    window.location.reload();
   };
   const HandledeletePdf = async (id) => {
     const snapshot = await database
@@ -333,10 +327,7 @@ function Dashboard() {
       .doc("notice_board_JnrClg")
       .get();
     var daty = snapshot.data().pdfs_array;
-    console.log("beforedelete", daty);
     daty.splice(id, 1);
-    console.log("afterdelete", daty);
-
     await database
       .collection("notice_board_JnrClg")
       .doc("notice_board_JnrClg")
@@ -351,7 +342,6 @@ function Dashboard() {
       .collection("notice_board_JnrClg")
       .doc("notice_board_JnrClg")
       .get();
-    console.log("inside pdfs useeffect");
     setpdfsss(snapshot2.data().pdfs_array);
   };
 
@@ -359,67 +349,6 @@ function Dashboard() {
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
-        {/* <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="dark"
-                icon="weekend"
-                title="Professor"
-                count={281}
-                percentage={{
-                  color: "success",
-                  amount: "+5%",
-                  label: "than lask semester",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                icon="leaderboard"
-                title="Students"
-                count="2,890"
-                percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last year",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="success"
-                icon="store"
-                title="Revenue"
-                count="340k"
-                percentage={{
-                  color: "success",
-                  amount: "+18%",
-                  label: "than last year",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Attendence"
-                count="+91"
-                percentage={{
-                  color: "success",
-                  amount: "+3",
-                  label: "than last month",
-                }}
-              />
-            </MDBox>
-          </Grid>
-        </Grid>{" "} */}
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={3}>
@@ -428,12 +357,12 @@ function Dashboard() {
                   <MDBox padding="1rem">
                     <img
                       style={{
-                        marginLeft: "35%",
-                        marginRight: "35%",
-                        width: "30%",
+                        marginLeft: "30%",
+                        marginRight: "30%",
+                        width: "40%",
                       }}
                       alt="test"
-                      src={bgImage}
+                      src={SbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
@@ -444,7 +373,7 @@ function Dashboard() {
                       <Divider />
                       <center>
                         <Link to={`/notice_Board_School`}>
-                          <MDButton variant="gradient" color="dark">
+                          <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
                         </Link>
@@ -460,12 +389,12 @@ function Dashboard() {
                   <MDBox padding="1rem">
                     <img
                       style={{
-                        marginLeft: "35%",
-                        marginRight: "35%",
-                        width: "30%",
+                        marginLeft: "30%",
+                        marginRight: "30%",
+                        width: "40%",
                       }}
                       alt="test"
-                      src={bgImage}
+                      src={JbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
@@ -476,8 +405,8 @@ function Dashboard() {
                       <Divider />
                       <center>
                         <Link to={`/notice_Board_Junior_College`}>
-                          <MDButton variant="gradient" color="dark">
-                            &nbsp;Selected
+                          <MDButton variant="gradient" color="primary">
+                            &nbsp;Select
                           </MDButton>
                         </Link>
                       </center>
@@ -492,12 +421,12 @@ function Dashboard() {
                   <MDBox padding="1rem">
                     <img
                       style={{
-                        marginLeft: "35%",
-                        marginRight: "35%",
-                        width: "30%",
+                        marginLeft: "30%",
+                        marginRight: "30%",
+                        width: "40%",
                       }}
                       alt="test"
-                      src={bgImage}
+                      src={DbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
@@ -508,7 +437,7 @@ function Dashboard() {
                       <Divider />
                       <center>
                         <Link to={`/notice_Board_Degree_College`}>
-                          <MDButton variant="gradient" color="dark">
+                          <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
                         </Link>
@@ -522,9 +451,52 @@ function Dashboard() {
         </MDBox>
         <br /> <br />
         <center>
-          <h4>Notice Board - Junior College</h4>
+          <MDTypography variant="h2" gutterBottom color="primary">
+            Notice Board - Junior College
+          </MDTypography>
         </center>
         <br />
+        <MDBox mb={8}>
+          {" "}
+          <Grid item xs={12}>
+            <Card sx={{ height: "100%" }}>
+              <MDBox pt={3} px={3}>
+                <MDTypography variant="h6" fontWeight="medium" color="primary">
+                  Upload Main Text
+                </MDTypography>
+                <MDBox mt={0} mb={2}>
+                  <form onSubmit={HandleTextUpload}>
+                    <Divider />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlTextarea1"
+                    >
+                      <Form.Label>Paragraph Text for the Page</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={5}
+                        value={newText}
+                        onChange={(e) => setNewText(e.target.value)}
+                      />
+                    </Form.Group>
+                    <MDBox mt={3} mb={3}>
+                      <center>
+                        <MDButton
+                          variant="gradient"
+                          color="primary"
+                          type="submit"
+                        >
+                          Update Text
+                        </MDButton>
+                      </center>
+                    </MDBox>
+                    {renderTextsuccessSB}
+                  </form>
+                </MDBox>
+              </MDBox>
+            </Card>
+          </Grid>
+        </MDBox>
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={8}>
@@ -545,26 +517,47 @@ function Dashboard() {
                 <MDBox p={4}>
                   <Carousel fade>
                     {imagesss.map((imag, id) => {
-                      const linky = imag.url;
                       return (
                         <Carousel.Item className="carouselImageBox">
-                          <div
+                          {/* <div
                             className="carouselImageDiv"
                             style={{
-                              backgroundImage: "url(" + linky + ")",
+                              backgroundImage: "url(" + imag.url + ")",
+                              backgroundSize: "cover",
                             }}
-                          ></div>
-                          {/* <img
+                          ></div> */}
+                          <img
                             style={{
-                              objectFit: "contain",
-                              objectPosition: "50% 50%",
+                              width: "100%",
                             }}
                             className="d-block  img-fluid"
                             src={imag.url}
                             alt="First slide"
-                          /> */}
+                          />
                           <Carousel.Caption>
-                            <h3>{imag.ImgText}</h3>
+                            <MDBox
+                              // component="li"
+                              // display="flex"
+                              // justifyContent="space-between"
+                              // alignItems="flex-start"
+                              variant="gradient"
+                              bgColor="dark"
+                              fullWidth
+                              borderRadius="lg"
+                              p={1}
+                              // mb={1}
+                              // mt={2}
+                            >
+                              <MDTypography
+                                variant="h6"
+                                fontWeight="medium"
+                                color="light"
+                              >
+                                {imag.ImgText}
+                              </MDTypography>
+                            </MDBox>
+
+                            {/* <h3>{imag.ImgText}</h3> */}
                             <MDBox mt={3} mb={3}>
                               <MDButton
                                 variant="gradient"
@@ -600,10 +593,10 @@ function Dashboard() {
                     <form onSubmit={HandleImageUpload} id="ImageUpload">
                       <input
                         style={{
-                          backgroundColor: "transparent",
+                          // backgroundColor: "#fb4787",
                           border: "1px solid lightgrey",
                           borderRadius: "8px",
-                          color: "#000",
+                          color: "#fb4787",
                           display: "block",
                           padding: "1em",
                           transition:
@@ -622,7 +615,7 @@ function Dashboard() {
 
                       <TextField
                         size="large"
-                        style={{ width: "100%" }}
+                        style={{ width: "100%", borderColor: "#fb4787" }}
                         id="outlined-basic"
                         label="Title"
                         onChange={(e) => {
@@ -636,7 +629,7 @@ function Dashboard() {
                         <MDButton
                           type="submit"
                           variant="gradient"
-                          color="success"
+                          color="primary"
                           fullWidth
                         >
                           Upload Image
@@ -646,8 +639,8 @@ function Dashboard() {
                     {imgProgress ? (
                       <ProgressBar
                         completed={imgProgress}
-                        bgColor="#71be1e"
-                        labelColor="#e80909"
+                        bgColor="#fb4787"
+                        labelColor="#fff"
                         labelSize="10 px"
                         animateOnRender
                       />
@@ -662,12 +655,16 @@ function Dashboard() {
             </Grid>
           </Grid>
         </MDBox>
-        <MDBox mt={12} mb={3}>
+        <MDBox mt={8} mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={7}>
               <Card id="delete-account">
                 <MDBox pt={3} px={2}>
-                  <MDTypography variant="h6" fontWeight="medium">
+                  <MDTypography
+                    variant="h6"
+                    fontWeight="medium"
+                    color="primary"
+                  >
                     PDF Section
                   </MDTypography>
                 </MDBox>
@@ -760,7 +757,11 @@ function Dashboard() {
             <Grid item xs={12} md={5}>
               <Card sx={{ height: "100%" }}>
                 <MDBox pt={3} px={3}>
-                  <MDTypography variant="h6" fontWeight="medium">
+                  <MDTypography
+                    variant="h6"
+                    fontWeight="medium"
+                    color="primary"
+                  >
                     Upload Pdf Files
                   </MDTypography>
                   <MDBox mt={0} mb={2}>
@@ -768,10 +769,10 @@ function Dashboard() {
                       <Divider />
                       <input
                         style={{
-                          backgroundColor: "transparent",
+                          // backgroundColor: "#fb4787",
                           border: "1px solid lightgrey",
                           borderRadius: "8px",
-                          color: "#000",
+                          color: "#fb4787",
                           display: "block",
                           padding: "1em",
                           transition:
@@ -803,7 +804,7 @@ function Dashboard() {
                       <MDBox mt={3} mb={3}>
                         <MDButton
                           variant="gradient"
-                          color="success"
+                          color="primary"
                           type="submit"
                           fullWidth
                         >
@@ -814,53 +815,14 @@ function Dashboard() {
                     {pdfProgress ? (
                       <ProgressBar
                         completed={pdfProgress}
-                        bgColor="#71be1e"
-                        labelColor="#e80909"
+                        bgColor="#fb4787"
+                        labelColor="#fff"
                         labelSize="10 px"
                         animateOnRender
                       />
                     ) : null}
                   </MDBox>
                   {renderPdfsuccessSB}
-                </MDBox>
-              </Card>
-            </Grid>
-
-            <Grid item xl={12}>
-              <Card sx={{ height: "100%" }}>
-                <MDBox pt={3} px={3}>
-                  <MDTypography variant="h6" fontWeight="medium">
-                    Upload Main Text
-                  </MDTypography>
-                  <MDBox mt={0} mb={2}>
-                    <form onSubmit={HandleTextUpload}>
-                      <Divider />
-                      <Form.Group
-                        className="mb-3"
-                        controlId="exampleForm.ControlTextarea1"
-                      >
-                        <Form.Label>Paragraph Text for the Page</Form.Label>
-                        <Form.Control
-                          as="textarea"
-                          rows={5}
-                          value={newText}
-                          onChange={(e) => setNewText(e.target.value)}
-                        />
-                      </Form.Group>
-                      <MDBox mt={3} mb={3}>
-                        <center>
-                          <MDButton
-                            variant="gradient"
-                            color="success"
-                            type="submit"
-                          >
-                            Update Text
-                          </MDButton>
-                        </center>
-                      </MDBox>
-                      {renderTextsuccessSB}
-                    </form>
-                  </MDBox>
                 </MDBox>
               </Card>
             </Grid>

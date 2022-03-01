@@ -75,8 +75,8 @@ function Dashboard({ history }) {
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
-        .collection("notice_board_DegreeClg")
-        .doc("notice_board_DegreeClg")
+        .collection("Time_table_School")
+        .doc("Time_table_School")
         .get();
 
       setimagesss(snapshot.data().images_array);
@@ -91,8 +91,8 @@ function Dashboard({ history }) {
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
-        .collection("notice_board_DegreeClg")
-        .doc("notice_board_DegreeClg")
+        .collection("Time_table_School")
+        .doc("Time_table_School")
         .get();
       console.log("inside pdfs useeffect");
 
@@ -103,8 +103,8 @@ function Dashboard({ history }) {
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
-        .collection("notice_board_DegreeClg")
-        .doc("notice_board_DegreeClg")
+        .collection("Time_table_School")
+        .doc("Time_table_School")
         .get();
       console.log("inside texts useeffect");
 
@@ -156,7 +156,7 @@ function Dashboard({ history }) {
   );
   const renderImgDeleteSB = (
     <MDSnackbar
-      color="primary"
+      color="error"
       icon="warning"
       title="Notice Board"
       content="Image deleted successfully!"
@@ -169,7 +169,7 @@ function Dashboard({ history }) {
   );
   const renderPdfDeleteSB = (
     <MDSnackbar
-      color="primary"
+      color="error"
       icon="warning"
       title="Notice Board"
       content="Pdf deleted successfully!"
@@ -200,15 +200,15 @@ function Dashboard({ history }) {
           .getDownloadURL()
           .then(async (url) => {
             const snapshot = await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("Time_table_School")
+              .doc("Time_table_School")
               .get();
             var daty = await snapshot.data().images_array;
             const newdaty = { url, ImgText };
             daty.push(newdaty);
             await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("Time_table_School")
+              .doc("Time_table_School")
               .update(
                 {
                   images_array: daty,
@@ -226,15 +226,15 @@ function Dashboard({ history }) {
   const HandleTextUpload = async (e) => {
     e.preventDefault();
     const snapshot = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("Time_table_School")
+      .doc("Time_table_School")
       .get();
     console.log("namaste", snapshot.data().texts_array);
     var daty = snapshot.data().texts_array;
     daty[0] = newText;
     await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("Time_table_School")
+      .doc("Time_table_School")
       .update(
         {
           texts_array: daty,
@@ -266,16 +266,16 @@ function Dashboard({ history }) {
           .getDownloadURL()
           .then(async (url) => {
             const snapshot = await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("Time_table_School")
+              .doc("Time_table_School")
               .get();
             console.log("namaste", snapshot.data().pdfs_array);
             var daty = snapshot.data().pdfs_array;
             const newpdfdaty = { url, PdfText };
             daty.push(newpdfdaty);
             await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("Time_table_School")
+              .doc("Time_table_School")
               .update(
                 {
                   pdfs_array: daty,
@@ -284,8 +284,8 @@ function Dashboard({ history }) {
               );
             setPdfsuccessSB(true);
             const snapshot2 = await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("Time_table_School")
+              .doc("Time_table_School")
               .get();
             console.log("inside pdfs useeffect");
             setpdfsss(snapshot2.data().pdfs_array);
@@ -297,8 +297,8 @@ function Dashboard({ history }) {
   };
   const HandledeleteImage = async (id) => {
     const snapshot = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("Time_table_School")
+      .doc("Time_table_School")
       .get();
     var daty = await snapshot.data().images_array;
     if (id == daty.size - 1) {
@@ -307,8 +307,8 @@ function Dashboard({ history }) {
       daty.splice(id, 1);
     }
     await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("Time_table_School")
+      .doc("Time_table_School")
       .update(
         {
           images_array: daty,
@@ -323,14 +323,14 @@ function Dashboard({ history }) {
   };
   const HandledeletePdf = async (id) => {
     const snapshot = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("Time_table_School")
+      .doc("Time_table_School")
       .get();
     var daty = snapshot.data().pdfs_array;
     daty.splice(id, 1);
     await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("Time_table_School")
+      .doc("Time_table_School")
       .update(
         {
           pdfs_array: daty,
@@ -339,8 +339,8 @@ function Dashboard({ history }) {
       );
     setPdfDeleteSB(true);
     const snapshot2 = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("Time_table_School")
+      .doc("Time_table_School")
       .get();
     setpdfsss(snapshot2.data().pdfs_array);
   };
@@ -362,17 +362,17 @@ function Dashboard({ history }) {
                         width: "40%",
                       }}
                       alt="test"
-                      src={SbgImage}
+                      src={JbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
                         <MDTypography variant="h5" textTransform="capitalize">
-                          School
+                          Junior College
                         </MDTypography>
                       </center>
                       <Divider />
                       <center>
-                        <Link to={`/notice_Board_School`}>
+                        <Link to={`/time_table_Junior_College`}>
                           <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
@@ -394,17 +394,17 @@ function Dashboard({ history }) {
                         width: "40%",
                       }}
                       alt="test"
-                      src={DbgImage}
+                      src={SbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
                         <MDTypography variant="h5" textTransform="capitalize">
-                          Degree College
+                          School
                         </MDTypography>
                       </center>
                       <Divider />
                       <center>
-                        <Link to={`/notice_Board_Degree_College`}>
+                        <Link to={`/time_table_School`}>
                           <MDButton variant="gradient" color="primary">
                             &nbsp;Selected
                           </MDButton>
@@ -426,17 +426,17 @@ function Dashboard({ history }) {
                         width: "40%",
                       }}
                       alt="test"
-                      src={JbgImage}
+                      src={DbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
                       <center>
                         <MDTypography variant="h5" textTransform="capitalize">
-                          Junior College
+                          Degree College
                         </MDTypography>
                       </center>
                       <Divider />
                       <center>
-                        <Link to={`/notice_Board_Junior_College`}>
+                        <Link to={`/time_table_Degree_College`}>
                           <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
@@ -452,7 +452,7 @@ function Dashboard({ history }) {
         <br /> <br />
         <center>
           <MDTypography variant="h2" gutterBottom color="primary">
-            Notice Board - Degree College
+            Timetable - School
           </MDTypography>
         </center>
         <br />

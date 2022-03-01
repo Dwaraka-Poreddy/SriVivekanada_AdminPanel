@@ -64,7 +64,7 @@ function Notifications() {
 
   const renderSuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Material Dashboard"
       content="Hello, world! This is a notification message"

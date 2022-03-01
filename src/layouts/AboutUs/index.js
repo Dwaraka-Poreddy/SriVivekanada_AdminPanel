@@ -75,8 +75,8 @@ function Dashboard({ history }) {
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
-        .collection("notice_board_DegreeClg")
-        .doc("notice_board_DegreeClg")
+        .collection("About_Us")
+        .doc("About_Us")
         .get();
 
       setimagesss(snapshot.data().images_array);
@@ -91,8 +91,8 @@ function Dashboard({ history }) {
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
-        .collection("notice_board_DegreeClg")
-        .doc("notice_board_DegreeClg")
+        .collection("About_Us")
+        .doc("About_Us")
         .get();
       console.log("inside pdfs useeffect");
 
@@ -103,8 +103,8 @@ function Dashboard({ history }) {
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
-        .collection("notice_board_DegreeClg")
-        .doc("notice_board_DegreeClg")
+        .collection("About_Us")
+        .doc("About_Us")
         .get();
       console.log("inside texts useeffect");
 
@@ -156,7 +156,7 @@ function Dashboard({ history }) {
   );
   const renderImgDeleteSB = (
     <MDSnackbar
-      color="primary"
+      color="error"
       icon="warning"
       title="Notice Board"
       content="Image deleted successfully!"
@@ -169,7 +169,7 @@ function Dashboard({ history }) {
   );
   const renderPdfDeleteSB = (
     <MDSnackbar
-      color="primary"
+      color="error"
       icon="warning"
       title="Notice Board"
       content="Pdf deleted successfully!"
@@ -200,21 +200,18 @@ function Dashboard({ history }) {
           .getDownloadURL()
           .then(async (url) => {
             const snapshot = await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("About_Us")
+              .doc("About_Us")
               .get();
             var daty = await snapshot.data().images_array;
             const newdaty = { url, ImgText };
             daty.push(newdaty);
-            await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
-              .update(
-                {
-                  images_array: daty,
-                },
-                { merge: true }
-              );
+            await database.collection("About_Us").doc("About_Us").update(
+              {
+                images_array: daty,
+              },
+              { merge: true }
+            );
             setImgsuccessSB(true);
             setimagesss(daty);
             document.getElementById("ImageUpload").reset();
@@ -226,21 +223,18 @@ function Dashboard({ history }) {
   const HandleTextUpload = async (e) => {
     e.preventDefault();
     const snapshot = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("About_Us")
+      .doc("About_Us")
       .get();
     console.log("namaste", snapshot.data().texts_array);
     var daty = snapshot.data().texts_array;
     daty[0] = newText;
-    await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
-      .update(
-        {
-          texts_array: daty,
-        },
-        { merge: true }
-      );
+    await database.collection("About_Us").doc("About_Us").update(
+      {
+        texts_array: daty,
+      },
+      { merge: true }
+    );
     setTextsuccessSB(true);
   };
 
@@ -266,26 +260,23 @@ function Dashboard({ history }) {
           .getDownloadURL()
           .then(async (url) => {
             const snapshot = await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("About_Us")
+              .doc("About_Us")
               .get();
             console.log("namaste", snapshot.data().pdfs_array);
             var daty = snapshot.data().pdfs_array;
             const newpdfdaty = { url, PdfText };
             daty.push(newpdfdaty);
-            await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
-              .update(
-                {
-                  pdfs_array: daty,
-                },
-                { merge: true }
-              );
+            await database.collection("About_Us").doc("About_Us").update(
+              {
+                pdfs_array: daty,
+              },
+              { merge: true }
+            );
             setPdfsuccessSB(true);
             const snapshot2 = await database
-              .collection("notice_board_DegreeClg")
-              .doc("notice_board_DegreeClg")
+              .collection("About_Us")
+              .doc("About_Us")
               .get();
             console.log("inside pdfs useeffect");
             setpdfsss(snapshot2.data().pdfs_array);
@@ -297,8 +288,8 @@ function Dashboard({ history }) {
   };
   const HandledeleteImage = async (id) => {
     const snapshot = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("About_Us")
+      .doc("About_Us")
       .get();
     var daty = await snapshot.data().images_array;
     if (id == daty.size - 1) {
@@ -306,41 +297,35 @@ function Dashboard({ history }) {
     } else {
       daty.splice(id, 1);
     }
-    await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
-      .update(
-        {
-          images_array: daty,
-        },
-        { merge: true },
-        setimagesss(daty),
-        document.getElementById("ImageUpload").reset(),
-        setImgDeleteSB(true)
-      );
+    await database.collection("About_Us").doc("About_Us").update(
+      {
+        images_array: daty,
+      },
+      { merge: true },
+      setimagesss(daty),
+      document.getElementById("ImageUpload").reset(),
+      setImgDeleteSB(true)
+    );
 
     window.location.reload();
   };
   const HandledeletePdf = async (id) => {
     const snapshot = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("About_Us")
+      .doc("About_Us")
       .get();
     var daty = snapshot.data().pdfs_array;
     daty.splice(id, 1);
-    await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
-      .update(
-        {
-          pdfs_array: daty,
-        },
-        { merge: true }
-      );
+    await database.collection("About_Us").doc("About_Us").update(
+      {
+        pdfs_array: daty,
+      },
+      { merge: true }
+    );
     setPdfDeleteSB(true);
     const snapshot2 = await database
-      .collection("notice_board_DegreeClg")
-      .doc("notice_board_DegreeClg")
+      .collection("About_Us")
+      .doc("About_Us")
       .get();
     setpdfsss(snapshot2.data().pdfs_array);
   };
@@ -349,7 +334,7 @@ function Dashboard({ history }) {
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
-        <MDBox mt={4.5}>
+        {/* <MDBox mt={4.5}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={3}>
               <MDBox mb={3}>
@@ -394,38 +379,6 @@ function Dashboard({ history }) {
                         width: "40%",
                       }}
                       alt="test"
-                      src={DbgImage}
-                    />
-                    <MDBox pt={2} pb={1} px={1}>
-                      <center>
-                        <MDTypography variant="h5" textTransform="capitalize">
-                          Degree College
-                        </MDTypography>
-                      </center>
-                      <Divider />
-                      <center>
-                        <Link to={`/notice_Board_Degree_College`}>
-                          <MDButton variant="gradient" color="primary">
-                            &nbsp;Selected
-                          </MDButton>
-                        </Link>
-                      </center>
-                    </MDBox>
-                  </MDBox>
-                </Card>
-              </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={3}>
-              <MDBox mb={3}>
-                <Card sx={{ height: "100%" }}>
-                  <MDBox padding="1rem">
-                    <img
-                      style={{
-                        marginLeft: "30%",
-                        marginRight: "30%",
-                        width: "40%",
-                      }}
-                      alt="test"
                       src={JbgImage}
                     />
                     <MDBox pt={2} pb={1} px={1}>
@@ -447,12 +400,44 @@ function Dashboard({ history }) {
                 </Card>
               </MDBox>
             </Grid>
+            <Grid item xs={12} md={6} lg={3}>
+              <MDBox mb={3}>
+                <Card sx={{ height: "100%" }}>
+                  <MDBox padding="1rem">
+                    <img
+                      style={{
+                        marginLeft: "30%",
+                        marginRight: "30%",
+                        width: "40%",
+                      }}
+                      alt="test"
+                      src={DbgImage}
+                    />
+                    <MDBox pt={2} pb={1} px={1}>
+                      <center>
+                        <MDTypography variant="h5" textTransform="capitalize">
+                          Degree College
+                        </MDTypography>
+                      </center>
+                      <Divider />
+                      <center>
+                        <Link to={`/notice_Board_Degree_College`}>
+                          <MDButton variant="gradient" color="primary">
+                            &nbsp;Select
+                          </MDButton>
+                        </Link>
+                      </center>
+                    </MDBox>
+                  </MDBox>
+                </Card>
+              </MDBox>
+            </Grid>
           </Grid>
         </MDBox>
-        <br /> <br />
+        <br /> <br /> */}
         <center>
           <MDTypography variant="h2" gutterBottom color="primary">
-            Notice Board - Degree College
+            About Us
           </MDTypography>
         </center>
         <br />

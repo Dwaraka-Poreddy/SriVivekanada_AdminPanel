@@ -92,7 +92,7 @@ const Basic = ({ history }) => {
   );
   const renderRegistersuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Notice Board"
       content="New user created successfully!"

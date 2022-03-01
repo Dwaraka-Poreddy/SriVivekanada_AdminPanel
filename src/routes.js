@@ -40,7 +40,17 @@ import Dashboard from "layouts/dashboard";
 import NoticeBoardSchool from "layouts/NoticeBoardSchool";
 import NoticeBoardJnrClg from "layouts/NoticeBoardJnrClg";
 import NoticeBoardDgClg from "layouts/NoticeBoardDgClg";
-import Notifications from "layouts/notifications";
+import TimeTableSchool from "layouts/TimeTableSchool";
+import TimeTableJnrClg from "layouts/TimeTableJnrClg";
+import TimeTableDgClg from "layouts/TimeTableDgClg";
+import ExamsResultsJnrClg from "layouts/ExamsResultsJnrClg";
+import ExamsResultsSchool from "layouts/ExamsResultsSchool";
+import ExamsResultsDgClg from "layouts/ExamsResultsDgClg";
+import ActivitiesSchool from "layouts/ActivitiesSchool";
+import ActivitiesJnrClg from "layouts/ActivitiesJnrClg";
+import ActivitiesDgClg from "layouts/ActivitiesDgClg";
+
+import AboutUs from "layouts/AboutUs";
 import SignIn from "layouts/authentication/sign-in";
 import React, { useState, useEffect } from "react";
 import Register from "layouts/authentication/Register";
@@ -74,159 +84,132 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "NoticeBoard ",
-    key: "noticeboardschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        table
-      </Icon>
-    ),
+    name: "NoticeBoard",
+    key: "notice",
+    icon: <Icon fontSize="small">table</Icon>,
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
   {
     type: "title",
-    name: "NoticeBoard Junior Clg",
-    key: "noticeboardjnrclg",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        NoticeBoard
-      </Icon>
-    ),
+    name: "NoticeBoard",
+    key: "notice",
+    icon: <Icon fontSize="small">NoticeBoard</Icon>,
     route: "/notice_Board_Junior_College",
     component: <NoticeBoardJnrClg />,
   },
   {
     type: "title",
-    name: "NoticeBoard Degree Clg",
-    key: "noticeboarddegreeclg",
-    icon: (
-      <Icon fontSize="small" color="primary" color="primary">
-        NoticeBoard
-      </Icon>
-    ),
+    name: "NoticeBoard",
+    key: "notice",
+    icon: <Icon fontSize="small">NoticeBoard</Icon>,
     route: "/notice_Board_Degree_College",
     component: <NoticeBoardDgClg />,
   },
   {
     type: "collapse",
-    name: "Time Table ",
-    key: "timetableschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        table_chart
-      </Icon>
-    ),
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    name: "Timetable",
+    key: "time",
+    icon: <Icon fontSize="small">table_chart</Icon>,
+    route: "/time_table_School",
+    component: <TimeTableSchool />,
   },
   {
     type: "title",
-    name: "Time Table ",
-    key: "timetableschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        Time Table
-      </Icon>
-    ),
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    name: "Timetable",
+    key: "time",
+    icon: <Icon fontSize="small">table_chart</Icon>,
+    route: "/time_table_Junior_College",
+    component: <TimeTableJnrClg />,
   },
   {
     type: "title",
-    name: "Time Table ",
-    key: "timetableschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        Time Table
-      </Icon>
-    ),
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    name: "Timetable",
+    key: "time",
+    icon: <Icon fontSize="small">table_chart</Icon>,
+    route: "/time_table_Degree_College",
+    component: <TimeTableDgClg />,
   },
   {
     type: "collapse",
-    name: "Study Material ",
-    key: "studymaterialschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        auto_stories
-      </Icon>
-    ),
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    name: "Exams & Results",
+    key: "exams",
+    icon: <Icon fontSize="small">star_outline</Icon>,
+    route: "/exams_results_School",
+    component: <ExamsResultsSchool />,
   },
   {
     type: "title",
-    name: "Study Material ",
-    key: "studymaterialschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        Study Material
-      </Icon>
-    ),
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    name: "Exams & Results",
+    key: "exams",
+    icon: <Icon fontSize="small">star_outline</Icon>,
+    route: "/exams_results_Junior_College",
+    component: <ExamsResultsJnrClg />,
   },
   {
     type: "title",
-    name: "Study Material ",
-    key: "studymaterialschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        Study Material
-      </Icon>
-    ),
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    name: "Exams & Results",
+    key: "exams",
+    icon: <Icon fontSize="small">star_outline</Icon>,
+    route: "/exams_results_Degree_College",
+    component: <ExamsResultsDgClg />,
   },
   {
     type: "collapse",
-    name: "Exams and Results  ",
-    key: "resultsschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        star_outline
-      </Icon>
-    ),
+    name: "Activities",
+    key: "activities",
+    icon: <Icon fontSize="small">local_activity</Icon>,
+    route: "/activities_School",
+    component: <ActivitiesSchool />,
+  },
+  {
+    type: "title",
+    name: "Activities",
+    key: "activities",
+    icon: <Icon fontSize="small">local_activity</Icon>,
+    route: "/activities_Junior_College",
+    component: <ActivitiesJnrClg />,
+  },
+  {
+    type: "title",
+    name: "Activities",
+    key: "activities",
+    icon: <Icon fontSize="small">local_activity</Icon>,
+    route: "/activities_Degree_College",
+    component: <ActivitiesDgClg />,
+  },
+  {
+    type: "collapse",
+    name: "Classroom Links",
+    key: "classroom",
+    icon: <Icon fontSize="small">auto_stories</Icon>,
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
   {
     type: "title",
-    name: "Results  ",
-    key: "resultsschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        Results
-      </Icon>
-    ),
+    name: "Classroom Links",
+    key: "classroom",
+    icon: <Icon fontSize="small">auto_stories</Icon>,
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
   {
     type: "title",
-    name: "Results  ",
-    key: "resultsschool",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        Results
-      </Icon>
-    ),
+    name: "Classroom Links",
+    key: "classroom",
+    icon: <Icon fontSize="small">auto_stories</Icon>,
     route: "/notice_Board_School",
     component: <NoticeBoardSchool />,
   },
+
   {
     type: "collapse",
     name: "About Us",
-    key: "aboutus",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        school
-      </Icon>
-    ),
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    key: "about",
+    icon: <Icon fontSize="small">school</Icon>,
+    route: "/about_us",
+    component: <AboutUs />,
   },
   // {
   //   type: "collapse",
@@ -240,11 +223,7 @@ const routes = [
     type: "title",
     name: "Sign In",
     key: "sign-in",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        login
-      </Icon>
-    ),
+    icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
     component: <SignIn />,
   },
@@ -252,11 +231,7 @@ const routes = [
     type: "title",
     name: "Register",
     key: "register",
-    icon: (
-      <Icon fontSize="small" color="primary">
-        login
-      </Icon>
-    ),
+    icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/Register",
     component: <Register />,
   },

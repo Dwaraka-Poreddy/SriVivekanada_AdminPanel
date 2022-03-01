@@ -51,8 +51,9 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode } =
     controller;
   const location = useLocation();
-  const collapseName = location.pathname.replace("/", "");
-
+  const collapseName = location.pathname.replace("/", "").split("_")[0];
+  console.log("location ", location);
+  console.log("location collapseName ", collapseName);
   let textColor = "white";
 
   if (transparentSidenav || (whiteSidenav && !darkMode)) {

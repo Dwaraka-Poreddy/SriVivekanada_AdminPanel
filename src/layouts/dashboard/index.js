@@ -117,7 +117,7 @@ function Dashboard({ history }) {
 
   const renderImgsuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Notice Board"
       content="Image along with text uploaded successfully!"
@@ -130,7 +130,7 @@ function Dashboard({ history }) {
   );
   const renderPdfsuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Notice Board"
       content="PDF uploaded successfully!"
@@ -143,7 +143,7 @@ function Dashboard({ history }) {
   );
   const renderTextsuccessSB = (
     <MDSnackbar
-      color="success"
+      color="primary"
       icon="check"
       title="Notice Board"
       content="Text updated successfully!"
@@ -397,7 +397,7 @@ function Dashboard({ history }) {
                       <center>
                         <Link to={`/notice_Board_Junior_College`}>
                           <MDButton variant="gradient" color="primary">
-                            &nbsp;Select
+                            &nbsp;Selected
                           </MDButton>
                         </Link>
                       </center>
@@ -447,6 +447,46 @@ function Dashboard({ history }) {
           </MDTypography>
         </center>
         <br />
+        <MDBox mb={8}>
+          <Grid item xs={12}>
+            <Card sx={{ height: "100%" }}>
+              <MDBox pt={3} px={3}>
+                <MDTypography variant="h6" fontWeight="medium" color="primary">
+                  Upload Main Text
+                </MDTypography>
+                <MDBox mt={0} mb={2}>
+                  <form onSubmit={HandleTextUpload}>
+                    <Divider />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlTextarea1"
+                    >
+                      <Form.Label>Paragraph Text for the Page</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={5}
+                        value={newText}
+                        onChange={(e) => setNewText(e.target.value)}
+                      />
+                    </Form.Group>
+                    <MDBox mt={3} mb={3}>
+                      <center>
+                        <MDButton
+                          variant="gradient"
+                          color="primary"
+                          type="submit"
+                        >
+                          Update Text
+                        </MDButton>
+                      </center>
+                    </MDBox>
+                    {renderTextsuccessSB}
+                  </form>
+                </MDBox>
+              </MDBox>
+            </Card>
+          </Grid>
+        </MDBox>
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={8}>
@@ -605,7 +645,7 @@ function Dashboard({ history }) {
             </Grid>
           </Grid>
         </MDBox>
-        <MDBox mt={12} mb={3}>
+        <MDBox mt={8} mb={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={7}>
               <Card id="delete-account">
@@ -765,57 +805,14 @@ function Dashboard({ history }) {
                     {pdfProgress ? (
                       <ProgressBar
                         completed={pdfProgress}
-                        bgColor="#71be1e"
-                        labelColor="#e80909"
+                        bgColor="#fb4787"
+                        labelColor="#fff"
                         labelSize="10 px"
                         animateOnRender
                       />
                     ) : null}
                   </MDBox>
                   {renderPdfsuccessSB}
-                </MDBox>
-              </Card>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Card sx={{ height: "100%" }}>
-                <MDBox pt={3} px={3}>
-                  <MDTypography
-                    variant="h6"
-                    fontWeight="medium"
-                    color="primary"
-                  >
-                    Upload Main Text
-                  </MDTypography>
-                  <MDBox mt={0} mb={2}>
-                    <form onSubmit={HandleTextUpload}>
-                      <Divider />
-                      <Form.Group
-                        className="mb-3"
-                        controlId="exampleForm.ControlTextarea1"
-                      >
-                        <Form.Label>Paragraph Text for the Page</Form.Label>
-                        <Form.Control
-                          as="textarea"
-                          rows={5}
-                          value={newText}
-                          onChange={(e) => setNewText(e.target.value)}
-                        />
-                      </Form.Group>
-                      <MDBox mt={3} mb={3}>
-                        <center>
-                          <MDButton
-                            variant="gradient"
-                            color="primary"
-                            type="submit"
-                          >
-                            Update Text
-                          </MDButton>
-                        </center>
-                      </MDBox>
-                      {renderTextsuccessSB}
-                    </form>
-                  </MDBox>
                 </MDBox>
               </Card>
             </Grid>
