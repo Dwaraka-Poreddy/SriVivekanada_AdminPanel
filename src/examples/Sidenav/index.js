@@ -199,7 +199,21 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           (darkMode && !transparentSidenav && whiteSidenav)
         }
       />
-      <List>{renderRoutes}</List>
+      <List>
+        {renderRoutes}
+        <Link
+          href="/authentication/sign-in"
+          rel="noreferrer"
+          sx={{ textDecoration: "none" }}
+        >
+          <SidenavCollapse
+            onClick={() => sessionStorage.removeItem("user1")}
+            name="Logout"
+            icon={<Icon fontSize="small">logout</Icon>}
+            active={1 === 2}
+          />
+        </Link>
+      </List>
     </SidenavRoot>
   );
 }
