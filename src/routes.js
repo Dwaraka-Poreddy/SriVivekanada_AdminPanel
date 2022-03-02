@@ -49,7 +49,9 @@ import ExamsResultsDgClg from "layouts/ExamsResultsDgClg";
 import ActivitiesSchool from "layouts/ActivitiesSchool";
 import ActivitiesJnrClg from "layouts/ActivitiesJnrClg";
 import ActivitiesDgClg from "layouts/ActivitiesDgClg";
-
+import FeesSchool from "layouts/FeesSchool";
+import FeesJnrClg from "layouts/FeesJnrClg";
+import FeesDgClg from "layouts/FeesDgClg";
 import AboutUs from "layouts/AboutUs";
 import SignIn from "layouts/authentication/sign-in";
 import React, { useState, useEffect } from "react";
@@ -207,16 +209,24 @@ const routes = [
     name: "Fees",
     key: "fees",
     icon: <Icon fontSize="small">currency_rupee</Icon>,
-    route: "/about_us",
-    component: <AboutUs />,
+    route: "/fees_School",
+    component: <FeesSchool />,
   },
   {
     type: "title",
     name: "Fees",
     key: "fees",
     icon: <Icon fontSize="small">currency_rupee</Icon>,
-    route: "/about_us",
-    component: <AboutUs />,
+    route: "/fees_Junior_College",
+    component: <FeesJnrClg />,
+  },
+  {
+    type: "title",
+    name: "Fees",
+    key: "fees",
+    icon: <Icon fontSize="small">currency_rupee</Icon>,
+    route: "/fees_Degree_College",
+    component: <FeesDgClg />,
   },
   {
     type: "collapse",
