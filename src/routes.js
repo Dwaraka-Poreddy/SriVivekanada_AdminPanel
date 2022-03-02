@@ -49,6 +49,9 @@ import ExamsResultsDgClg from "layouts/ExamsResultsDgClg";
 import ActivitiesSchool from "layouts/ActivitiesSchool";
 import ActivitiesJnrClg from "layouts/ActivitiesJnrClg";
 import ActivitiesDgClg from "layouts/ActivitiesDgClg";
+import ClassRoomLinksSchool from "layouts/ClassRoomLinksSchool";
+import ClassRoomLinksJnrClg from "layouts/ClassRoomLinksJnrClg";
+import ClassRoomLinksDgClg from "layouts/ClassRoomLinksDgClg";
 import FeesSchool from "layouts/FeesSchool";
 import FeesJnrClg from "layouts/FeesJnrClg";
 import FeesDgClg from "layouts/FeesDgClg";
@@ -136,7 +139,7 @@ const routes = [
     type: "collapse",
     name: "Exams & Results",
     key: "exams",
-    icon: <Icon fontSize="small">star_outline</Icon>,
+    icon: <Icon fontSize="small">star_half</Icon>,
     route: "/exams_results_School",
     component: <ExamsResultsSchool />,
   },
@@ -144,7 +147,7 @@ const routes = [
     type: "title",
     name: "Exams & Results",
     key: "exams",
-    icon: <Icon fontSize="small">star_outline</Icon>,
+    icon: <Icon fontSize="small">star_half</Icon>,
     route: "/exams_results_Junior_College",
     component: <ExamsResultsJnrClg />,
   },
@@ -152,7 +155,7 @@ const routes = [
     type: "title",
     name: "Exams & Results",
     key: "exams",
-    icon: <Icon fontSize="small">star_outline</Icon>,
+    icon: <Icon fontSize="small">star_half</Icon>,
     route: "/exams_results_Degree_College",
     component: <ExamsResultsDgClg />,
   },
@@ -183,26 +186,26 @@ const routes = [
   {
     type: "collapse",
     name: "Classroom Links",
-    key: "classroom",
+    key: "class",
     icon: <Icon fontSize="small">auto_stories</Icon>,
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    route: "/class_room_links_School",
+    component: <ClassRoomLinksSchool />,
   },
   {
     type: "title",
     name: "Classroom Links",
-    key: "classroom",
+    key: "class",
     icon: <Icon fontSize="small">auto_stories</Icon>,
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    route: "/class_room_links_Junior_College",
+    component: <ClassRoomLinksJnrClg />,
   },
   {
     type: "title",
     name: "Classroom Links",
-    key: "classroom",
+    key: "class",
     icon: <Icon fontSize="small">auto_stories</Icon>,
-    route: "/notice_Board_School",
-    component: <NoticeBoardSchool />,
+    route: "/class_room_links_Degree_College",
+    component: <ClassRoomLinksDgClg />,
   },
   {
     type: "collapse",

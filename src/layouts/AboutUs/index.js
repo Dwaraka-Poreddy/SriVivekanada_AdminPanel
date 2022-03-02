@@ -598,6 +598,7 @@ function Dashboard({ history }) {
                       <Divider />
 
                       <TextField
+                        required
                         size="large"
                         style={{ width: "100%", borderColor: "#fb4787" }}
                         id="outlined-basic"
@@ -774,6 +775,7 @@ function Dashboard({ history }) {
                       <Divider />
 
                       <TextField
+                        required
                         size="large"
                         style={{ width: "100%" }}
                         id="outlined-basic"

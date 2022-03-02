@@ -415,6 +415,7 @@ function Dashboard({ history }) {
                       <Divider />
 
                       <TextField
+                        required
                         size="large"
                         style={{ width: "100%" }}
                         id="outlined-basic"

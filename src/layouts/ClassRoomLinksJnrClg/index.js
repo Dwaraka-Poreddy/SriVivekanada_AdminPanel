@@ -28,19 +28,17 @@ import { Divider, TextField } from "@mui/material";
 
 //New changes by Dwarak
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import firebase from "../.././firebase";
-import { storage } from "../.././firebase";
-import { v4 as uuidv4 } from "uuid";
 import ProgressBar from "@ramonak/react-progress-bar";
 import MDSnackbar from "components/MDSnackbar";
 import "../index.css";
 import { Link, useNavigate } from "react-router-dom";
-function Dashboard({ history }) {
+function Dashboard() {
   const database = firebase.firestore();
   const [pdfProgress, setpdfProgress] = useState(0);
-  const [PdfText, setPdfText] = useState("");
-  const [pdfsss, setpdfsss] = useState([]);
+  const [LinksText, setLinksText] = useState("");
+  const [Linky, setLinky] = useState("");
+  const [linksss, setlinksss] = useState([]);
   const [PdfsuccessSB, setPdfsuccessSB] = useState(false);
   const closePdfsuccessSB = () => setPdfsuccessSB(false);
   const openPdfsuccessSB = () => setPdfsuccessSB(true);
@@ -48,10 +46,8 @@ function Dashboard({ history }) {
   const openPdfDeleteSB = () => setPdfDeleteSB(true);
   const closePdfDeleteSB = () => setPdfDeleteSB(false);
   const navigate = useNavigate();
-  const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
     var userLocal = sessionStorage.getItem("user1");
-    console.log("userLocal ", userLocal);
     if (!userLocal) {
       navigate("/authentication/sign-in");
     }
@@ -60,12 +56,10 @@ function Dashboard({ history }) {
   useEffect(() => {
     const getContent = async () => {
       const snapshot = await database
-        .collection("Fees_JnrClg")
-        .doc("Fees_JnrClg")
+        .collection("Class_Room_Links_JnrClg")
+        .doc("Class_Room_Links_JnrClg")
         .get();
-      console.log("inside pdfs useeffect");
-
-      setpdfsss(snapshot.data().pdfs_array);
+      setlinksss(snapshot.data().links_array);
     };
     getContent();
   }, []);
@@ -75,7 +69,7 @@ function Dashboard({ history }) {
       color="primary"
       icon="check"
       title="Notice Board"
-      content="PDF uploaded successfully!"
+      content="Classroom Link uploaded successfully!"
       dateTime="just now"
       open={PdfsuccessSB}
       onClose={closePdfsuccessSB}
@@ -89,7 +83,7 @@ function Dashboard({ history }) {
       color="error"
       icon="warning"
       title="Notice Board"
-      content="Pdf deleted successfully!"
+      content="Classroom Link deleted successfully!"
       dateTime="just now"
       open={PdfDeleteSB}
       onClose={closePdfDeleteSB}
@@ -99,73 +93,47 @@ function Dashboard({ history }) {
   );
 
   const HandlePdfUpload = async (e) => {
-    var ud = uuidv4();
-    console.log(ud);
     e.preventDefault();
-    const file = e.target[0].files[0];
-
-    const uploadTask = storage.ref(`/pdfs/${ud + file.name}`).put(file);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setpdfProgress(prog);
-      },
-      (err) => console.log(err),
-      async () => {
-        await storage
-          .ref(`/pdfs/${ud + file.name}`)
-          .getDownloadURL()
-          .then(async (url) => {
-            const snapshot = await database
-              .collection("Fees_JnrClg")
-              .doc("Fees_JnrClg")
-              .get();
-            console.log("namaste", snapshot.data().pdfs_array);
-            var daty = snapshot.data().pdfs_array;
-            const newpdfdaty = { url, PdfText };
-            daty.push(newpdfdaty);
-            await database.collection("Fees_JnrClg").doc("Fees_JnrClg").update(
-              {
-                pdfs_array: daty,
-              },
-              { merge: true }
-            );
-            setPdfsuccessSB(true);
-            const snapshot2 = await database
-              .collection("Fees_JnrClg")
-              .doc("Fees_JnrClg")
-              .get();
-            console.log("inside pdfs useeffect");
-            setpdfsss(snapshot2.data().pdfs_array);
-            document.getElementById("PdfUpload").reset();
-            setpdfProgress(0);
-          });
-      }
-    );
+    const snapshot = await database
+      .collection("Class_Room_Links_JnrClg")
+      .doc("Class_Room_Links_JnrClg")
+      .get();
+    var daty = snapshot.data().links_array;
+    const newLinksdaty = { Linky, LinksText };
+    daty.push(newLinksdaty);
+    await database
+      .collection("Class_Room_Links_JnrClg")
+      .doc("Class_Room_Links_JnrClg")
+      .update(
+        {
+          links_array: daty,
+        },
+        { merge: true }
+      );
+    setPdfsuccessSB(true);
+    setlinksss(daty);
+    document.getElementById("PdfUpload").reset();
+    setpdfProgress(0);
   };
 
   const HandledeletePdf = async (id) => {
     const snapshot = await database
-      .collection("Fees_JnrClg")
-      .doc("Fees_JnrClg")
+      .collection("Class_Room_Links_JnrClg")
+      .doc("Class_Room_Links_JnrClg")
       .get();
-    var daty = snapshot.data().pdfs_array;
+    var daty = snapshot.data().links_array;
     daty.splice(id, 1);
-    await database.collection("Fees_JnrClg").doc("Fees_JnrClg").update(
-      {
-        pdfs_array: daty,
-      },
-      { merge: true }
-    );
+    await database
+      .collection("Class_Room_Links_JnrClg")
+      .doc("Class_Room_Links_JnrClg")
+      .update(
+        {
+          links_array: daty,
+        },
+        { merge: true }
+      );
     setPdfDeleteSB(true);
-    const snapshot2 = await database
-      .collection("Fees_JnrClg")
-      .doc("Fees_JnrClg")
-      .get();
-    setpdfsss(snapshot2.data().pdfs_array);
+    setlinksss(daty);
   };
 
   return (
@@ -195,7 +163,7 @@ function Dashboard({ history }) {
                       </center>
                       <Divider />
                       <center>
-                        <Link to={`/fees_School`}>
+                        <Link to={`/class_room_links_School`}>
                           <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
@@ -205,7 +173,7 @@ function Dashboard({ history }) {
                   </MDBox>
                 </Card>
               </MDBox>
-            </Grid>
+            </Grid>{" "}
             <Grid item xs={12} md={6} lg={6}>
               <MDBox mb={3}>
                 <Card sx={{ height: "100%" }}>
@@ -227,7 +195,7 @@ function Dashboard({ history }) {
                       </center>
                       <Divider />
                       <center>
-                        <Link to={`/fees_Junior_College`}>
+                        <Link to={`/class_room_links_Junior_College`}>
                           <MDButton variant="gradient" color="primary">
                             &nbsp;Selected
                           </MDButton>
@@ -259,7 +227,7 @@ function Dashboard({ history }) {
                       </center>
                       <Divider />
                       <center>
-                        <Link to={`/fees_Degree_College`}>
+                        <Link to={`/class_room_links_Degree_College`}>
                           <MDButton variant="gradient" color="primary">
                             &nbsp;Select
                           </MDButton>
@@ -275,7 +243,7 @@ function Dashboard({ history }) {
         <br /> <br />
         <center>
           <MDTypography variant="h2" gutterBottom color="primary">
-            Fees - Junior College
+            Classroom Links - Junior College
           </MDTypography>
         </center>
         <br />
@@ -289,7 +257,7 @@ function Dashboard({ history }) {
                     fontWeight="medium"
                     color="primary"
                   >
-                    PDF Section
+                    Links Section
                   </MDTypography>
                 </MDBox>
                 <MDBox pt={1} pb={2} px={2}>
@@ -300,7 +268,7 @@ function Dashboard({ history }) {
                     p={0}
                     m={0}
                   >
-                    {pdfsss.map((pdif, id) => {
+                    {linksss.map((pdif, id) => {
                       return (
                         <MDBox
                           component="li"
@@ -329,7 +297,7 @@ function Dashboard({ history }) {
                                 fontWeight="medium"
                                 textTransform="capitalize"
                               >
-                                {pdif.PdfText}
+                                {pdif.LinksText}
                                 {/* {pdif
                                   .slice(123)
                                   .split("?")[0]
@@ -356,8 +324,8 @@ function Dashboard({ history }) {
                                 <a
                                   target="_blank"
                                   rel="noreferrer noopener "
-                                  href={pdif.url}
-                                  download={pdif.url}
+                                  href={pdif.Linky}
+                                  download={pdif.Linky}
                                   rel="noopener"
                                   role="button"
                                 >
@@ -391,7 +359,19 @@ function Dashboard({ history }) {
                   <MDBox mt={0} mb={2}>
                     <form onSubmit={HandlePdfUpload} id="PdfUpload">
                       <Divider />
-                      <input
+                      <TextField
+                        required
+                        size="large"
+                        style={{ width: "100%" }}
+                        id="outlined-basic"
+                        label="Classroom Link"
+                        onChange={(e) => {
+                          setLinky(e.target.value);
+                          setpdfProgress(0);
+                        }}
+                        variant="outlined"
+                      />
+                      {/* <input
                         style={{
                           // backgroundColor: "#fb4787",
                           border: "1px solid lightgrey",
@@ -410,7 +390,7 @@ function Dashboard({ history }) {
                           setpdfProgress(0);
                         }}
                         required
-                      />
+                      /> */}
                       <Divider />
 
                       <TextField
@@ -420,7 +400,7 @@ function Dashboard({ history }) {
                         id="outlined-basic"
                         label="Title"
                         onChange={(e) => {
-                          setPdfText(e.target.value);
+                          setLinksText(e.target.value);
                           setpdfProgress(0);
                         }}
                         variant="outlined"
@@ -433,7 +413,7 @@ function Dashboard({ history }) {
                           type="submit"
                           fullWidth
                         >
-                          Upload Pdf
+                          Upload Link
                         </MDButton>
                       </MDBox>
                     </form>
