@@ -132,7 +132,7 @@ const Basic = ({ history }) => {
 
     // auth.signInWithEmailAndPassword(email, password).then((response) => {
     //   navigate("/");
-    //   sessionStorage.setItem(
+    //   localStorage.setItem(
     //     "Auth Token",
     //     response._tokenResponse.refreshToken
     //   );

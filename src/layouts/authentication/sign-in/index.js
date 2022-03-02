@@ -87,7 +87,7 @@ const Basic = ({ history }) => {
     const snapshot = await database.collection("Admin_Auth").doc(email).get();
     console.log("authentication: ", snapshot.data());
     if (password === snapshot.data().password) {
-      sessionStorage.setItem("user1", email);
+      localStorage.setItem("user1", email);
       navigate("/about_us");
       dispatch({
         type: "LOGGED_IN_USER",
@@ -116,7 +116,7 @@ const Basic = ({ history }) => {
 
     // auth.signInWithEmailAndPassword(email, password).then((response) => {
     //   navigate("/");
-    //   sessionStorage.setItem(
+    //   localStorage.setItem(
     //     "Auth Token",
     //     response._tokenResponse.refreshToken
     //   );

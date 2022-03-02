@@ -16,7 +16,7 @@ import MDTypography from "components/MDTypography";
 
 import SbgImage from "assets/images/sv_school.jpg";
 import JbgImage from "assets/images/sv_jnrClg.png";
-import DbgImage from "assets/images/SV_Logo.png";
+import DbgImage from "assets/images/SV_dgClg.jpg";
 
 // Sri Vivekananda example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -65,7 +65,7 @@ function Dashboard({ history }) {
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
   useEffect(() => {
-    var userLocal = sessionStorage.getItem("user1");
+    var userLocal = localStorage.getItem("user1");
     console.log("userLocal ", userLocal);
     if (!userLocal) {
       navigate("/authentication/sign-in");
@@ -406,7 +406,7 @@ function Dashboard({ history }) {
                       <center>
                         <Link to={`/notice_Board_School`}>
                           <MDButton variant="gradient" color="primary">
-                            &nbsp;Select
+                            &nbsp;Selected
                           </MDButton>
                         </Link>
                       </center>

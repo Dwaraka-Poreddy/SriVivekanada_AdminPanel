@@ -16,7 +16,7 @@ import MDTypography from "components/MDTypography";
 
 import SbgImage from "assets/images/sv_school.jpg";
 import JbgImage from "assets/images/sv_jnrClg.png";
-import DbgImage from "assets/images/SV_Logo.png";
+import DbgImage from "assets/images/SV_dgClg.jpg";
 
 // Sri Vivekananda example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -58,7 +58,7 @@ function Dashboard() {
   const closePdfDeleteSB = () => setPdfDeleteSB(false);
   const navigate = useNavigate();
   useEffect(() => {
-    var userLocal = sessionStorage.getItem("user1");
+    var userLocal = localStorage.getItem("user1");
     if (!userLocal) {
       navigate("/authentication/sign-in");
     }

@@ -89,6 +89,14 @@ const routes = [
   // },
   {
     type: "collapse",
+    name: "About Us",
+    key: "about",
+    icon: <Icon fontSize="small">school</Icon>,
+    route: "/about_us",
+    component: <AboutUs />,
+  },
+  {
+    type: "collapse",
     name: "Notice Board",
     key: "notice",
     icon: <Icon fontSize="small">dashboard</Icon>,
@@ -231,14 +239,7 @@ const routes = [
     route: "/fees_Degree_College",
     component: <FeesDgClg />,
   },
-  {
-    type: "collapse",
-    name: "About Us",
-    key: "about",
-    icon: <Icon fontSize="small">school</Icon>,
-    route: "/about_us",
-    component: <AboutUs />,
-  },
+
   // {
   //   type: "collapse",
   //   name: "Notifications",

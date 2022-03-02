@@ -88,7 +88,7 @@ function Footer({ light }) {
               },
             })}
           >
-            <MDBox component="li" px={2} lineHeight={1}>
+            {/* <MDBox component="li" px={2} lineHeight={1}>
               <Link href="/notice_Board_School" target="_blank">
                 <MDTypography
                   variant="button"
@@ -98,7 +98,7 @@ function Footer({ light }) {
                   About Us
                 </MDTypography>
               </Link>
-            </MDBox>
+            </MDBox> */}
             {/* <MDBox component="li" px={2} lineHeight={1}>
               <Link href="https://Srinivas&Dwarak/blog" target="_blank">
                 <MDTypography

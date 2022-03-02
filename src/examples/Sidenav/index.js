@@ -207,7 +207,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           sx={{ textDecoration: "none" }}
         >
           <SidenavCollapse
-            onClick={() => sessionStorage.removeItem("user1")}
+            onClick={() => localStorage.removeItem("user1")}
             name="Logout"
             icon={<Icon fontSize="small">logout</Icon>}
             active={1 === 2}
