@@ -471,9 +471,19 @@ function Dashboard({ history }) {
                       className="mb-3"
                       controlId="exampleForm.ControlTextarea1"
                     >
-                      <Form.Label>Paragraph Text for the Page</Form.Label>
+                      <Form.Label>
+                        Paragraph Text for the Page
+                        <Form.Text
+                          id="passwordHelpBlock"
+                          muted
+                          className="p-3 font-weight-light"
+                        >
+                          ({newText.length})
+                        </Form.Text>
+                      </Form.Label>
                       <Form.Control
                         as="textarea"
+                        maxlength={500}
                         rows={5}
                         value={newText}
                         onChange={(e) => setNewText(e.target.value)}
