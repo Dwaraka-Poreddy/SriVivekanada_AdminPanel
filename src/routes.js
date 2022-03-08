@@ -52,6 +52,7 @@ import ActivitiesDgClg from "layouts/ActivitiesDgClg";
 import ClassRoomLinksSchool from "layouts/ClassRoomLinksSchool";
 import ClassRoomLinksJnrClg from "layouts/ClassRoomLinksJnrClg";
 import ClassRoomLinksDgClg from "layouts/ClassRoomLinksDgClg";
+import Approve_Students from "layouts/Approve_Students";
 import FeesSchool from "layouts/FeesSchool";
 import FeesJnrClg from "layouts/FeesJnrClg";
 import FeesDgClg from "layouts/FeesDgClg";
@@ -263,6 +264,14 @@ const routes = [
     icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/Register",
     component: <Register />,
+  },
+  {
+    type: "collapse",
+    name: "Approve Students",
+    key: "approve",
+    icon: <Icon fontSize="small">school</Icon>,
+    route: "/approve_students",
+    component: <Approve_Students />,
   },
 ];
 
