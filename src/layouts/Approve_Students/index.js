@@ -235,81 +235,98 @@ function Dashboard({ history }) {
                               alignItems={{ xs: "flex-start", sm: "center" }}
                               flexDirection={{ xs: "column", sm: "row" }}
                             >
-                              <MDBox mr={1}>
-                                <MDTypography
-                                  variant="button"
-                                  fontWeight="medium"
-                                  textTransform="capitalize"
-                                >
-                                  {pdif.firstName}
-                                </MDTypography>
-                              </MDBox>
-                              <MDBox mr={1}>
-                                <MDTypography
-                                  variant="button"
-                                  fontWeight="medium"
-                                  textTransform="capitalize"
-                                >
-                                  {pdif.class_stu}
-                                </MDTypography>
-                              </MDBox>
-                              <MDBox mr={1}>
-                                <MDTypography
-                                  variant="button"
-                                  fontWeight="medium"
-                                  textTransform="capitalize"
-                                >
-                                  {pdif.email}
-                                </MDTypography>
-                              </MDBox>
-
-                              <MDBox
-                                ml={{ xs: -1.5, sm: 0 }}
-                                display="flex"
-                                alignItems="center"
-                                mt={{ xs: 2, sm: 0 }}
+                              <Grid
+                                container
+                                spacing={3}
+                                justifyContent="center"
                               >
-                                <MDBox mr={1}>
-                                  {" "}
-                                  <TextField
-                                    required
-                                    size="medium"
-                                    // style={{ width: "100%" }}
-                                    id="outlined-basic"
-                                    label="Registration ID"
-                                    onChange={(e) => {
-                                      setPdfText(e.target.value);
-                                    }}
-                                    variant="outlined"
-                                  />
-                                </MDBox>
-                                <MDBox mr={1}>
-                                  <MDButton
-                                    variant="text"
-                                    color="primary"
-                                    onClick={() => {
-                                      // HandledeletePdf(id);
-                                      HandleApprove(pdif.uid);
-                                    }}
-                                  >
-                                    <Icon>how_to_reg</Icon>Approve
-                                  </MDButton>
-                                </MDBox>
+                                <Grid item lg={3}>
+                                  <MDBox mr={1}>
+                                    <MDTypography
+                                      variant="button"
+                                      fontWeight="medium"
+                                      textTransform="capitalize"
+                                    >
+                                      {pdif.firstName}
+                                    </MDTypography>
+                                  </MDBox>
+                                </Grid>
+                                <Grid item lg={1}>
+                                  <MDBox mr={1}>
+                                    <MDTypography
+                                      variant="button"
+                                      fontWeight="medium"
+                                      textTransform="capitalize"
+                                    >
+                                      {pdif.class_stu}
+                                    </MDTypography>
+                                  </MDBox>
+                                </Grid>
+                                <Grid item lg={3}>
+                                  <MDBox mr={1}>
+                                    <MDTypography
+                                      variant="button"
+                                      fontWeight="medium"
+                                      textTransform="capitalize"
+                                    >
+                                      {pdif.email}
+                                    </MDTypography>
+                                  </MDBox>
+                                </Grid>
+                                <Grid item lg={2}>
+                                  {/* <MDBox
+                                    ml={{ xs: -1.5, sm: 0 }}
+                                    display="flex"
+                                    alignItems="center"
+                                    mt={{ xs: 2, sm: 0 }}
+                                  > */}
+                                  <MDBox mr={1}>
+                                    {" "}
+                                    <TextField
+                                      required
+                                      size="medium"
+                                      // style={{ width: "100%" }}
+                                      id="outlined-basic"
+                                      label="Registration ID"
+                                      onChange={(e) => {
+                                        setPdfText(e.target.value);
+                                      }}
+                                      variant="outlined"
+                                    />
+                                  </MDBox>
+                                </Grid>
+                                <Grid item lg={1}>
+                                  <MDBox mr={1}>
+                                    <MDButton
+                                      variant="text"
+                                      color="primary"
+                                      onClick={() => {
+                                        // HandledeletePdf(id);
+                                        HandleApprove(pdif.uid);
+                                      }}
+                                    >
+                                      <Icon>how_to_reg</Icon>Approve
+                                    </MDButton>
+                                  </MDBox>
+                                </Grid>
                                 {renderPdfsuccessSB}
-                                <MDBox mr={1}>
-                                  <MDButton
-                                    variant="text"
-                                    color="error"
-                                    onClick={() => {
-                                      HandleDisApprove(pdif.uid);
-                                    }}
-                                  >
-                                    <Icon>cancel</Icon>Disapprove
-                                  </MDButton>
-                                </MDBox>
-                                {renderDisapproveSB}
-                              </MDBox>
-                              {renderPdfDeleteSB}
+                                <Grid item lg={1}>
+                                  <MDBox mr={1}>
+                                    <MDButton
+                                      variant="text"
+                                      color="error"
+                                      onClick={() => {
+                                        HandleDisApprove(pdif.uid);
+                                      }}
+                                    >
+                                      <Icon>cancel</Icon>Disapprove
+                                    </MDButton>
+                                    {/* </MDBox> */}
+                                    {renderDisapproveSB}
+                                  </MDBox>
+                                </Grid>
+                                {renderPdfDeleteSB}{" "}
+                              </Grid>
                             </MDBox>
                           </MDBox>
                         </MDBox>
