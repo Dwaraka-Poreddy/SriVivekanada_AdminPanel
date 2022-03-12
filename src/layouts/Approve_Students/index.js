@@ -200,7 +200,7 @@ function Dashboard({ history }) {
                     fontWeight="medium"
                     color="primary"
                   >
-                    PDF Section
+                    Approval Section
                   </MDTypography>
                 </MDBox>
                 <MDBox pt={1} pb={2} px={2}>
